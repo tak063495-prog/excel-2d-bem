@@ -9,6 +9,10 @@
 - [VBA組込済みExcelブック](outputs/bem_vba_stage3/Elastic_BEM_VBA_Full.xlsm)
 - [配布一式ZIP](outputs/Elastic_BEM_VBA_Stage3.zip)
 - [詳細な操作説明](outputs/bem_vba_stage3/FMM・操作説明.md)
+- [使い方・2D/3Dの入力例](docs/usage.md)
+- [注意事項・精度確認](docs/limitations.md)
+- [BEM・特異積分・FMM・GMRESの原理](docs/bem-principles.md)
+- [issue #1の修正内容と検証](docs/issue-1.md)
 - [検証結果](outputs/bem_vba_stage3/検証結果.json)
 
 1. ブックをWindows版Excelで開き、マクロを有効にします。
@@ -18,6 +22,10 @@
 5. 「境界結果」「内点結果」を確認し、「JSON・CSV出力」で保存します。
 
 FMM・GMRESの設定はB49:B61です。初期モデルは各辺16分割の2D二次要素で、FMMによる解析結果を保存しています。
+
+2026-10-09に[issue #1](https://github.com/tak063495-prog/excel-2d-bem/issues/1)を確認し、大座標の2D面積判定と自己DE積分を修正しました。
+領域の局所座標で計算し、結果の位置には元の絶対座標を保存します。数値のテキスト出力もDouble精度を保持する形式へ修正しています。
+内部場評価時の実行時エラー13につながる、座標原点の初期化漏れも修正しました。
 
 ## 実装
 
@@ -40,9 +48,10 @@ FMM経路は全G/H行列やモデル全体の密行列を生成しません。`a
 ThisWorkbookのコードは標準モジュールではなく、ブックモジュールへ貼り付けます。
 `source/elastic_bem_unified/elasticbem/`は添付元Pythonの数値比較用です。
 
-2026-10-08、Windows版Excel 16.0で、Pythonとの作用ベクトル・境界解・内部場の比較と、Excelの入出力・設定変更を検証しました。
-2D 1536未知数、3D二次1224未知数を含みます。今回追加した23項目ではdense/FMM併用、材料定数の範囲、設定変更後の無効化、評価点なし、複数領域の結果順序、失敗後の再実行を確認しています。
+2026-10-09、Windows版Excel 16.0で、Pythonとの作用ベクトル・境界解・内部場の比較と、Excelの入出力・設定変更を再検証しました。
+2D 1536未知数、3D二次1224未知数を含みます。dense/FMM併用、材料定数の範囲、設定変更後の無効化、評価点なし、複数領域の結果順序、失敗後の再実行も確認しています。
 詳細な件数と数値は検証結果JSONを参照してください。
+今回の追加16項目と配布ブックの最終確認を含め、重複を除いた115項目が合格しました。
 
 以下のPythonは開発・比較検証に使用します。利用者のVBA解析には不要です。
 Python 3.12、NumPy、SciPy、pywin32、threadpoolctlと、Windows版デスクトップExcelを使用します。
@@ -56,8 +65,12 @@ python -m venv .venv
 .venv\Scripts\python.exe verify_fmm_features.py
 .venv\Scripts\python.exe verify_solver_edges.py --stage3
 .venv\Scripts\python.exe verify_regression.py
+.venv\Scripts\python.exe verify_issue1.py
 ```
 
 検証スクリプトは専用の非表示Excelを起動し、ブックを読取専用で開きます。検証用VBAを一時注入し、保存せず閉じます。
 利用中のExcelブックを閉じる処理はありません。検証の出力は`qa_stage3/`へ生成されます。
 配布ブック内に検証用モジュールやPython起動処理はありません。
+
+ソースを編集した開発者は`update_workbook.py`で既存ブックへ組み込めます。初回に`qa_stage3/pre_issue1.xlsm`へバックアップし、そのブックを基にVBAを組み込み、コンパイル・初期モデルの解析後に配布xlsmを更新します。現在の独自入力を保持したい場合は、先にブックを別名で保存してください。
+`node verify_solver_visuals.mjs --fmm`はartifact-toolによる読取専用の表示・セル検査、`final_check_fmm.py`は組込ソース・配布形式・初期例の確認とZIP生成です。表示検査にはこの開発環境の`@oai/artifact-tool`が必要で、通常のVBA利用や数値検証には不要です。

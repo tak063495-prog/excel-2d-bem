@@ -1,0 +1,12 @@
+{
+  "original_origin0_generate": "OK: 32 節点 / 16 要素",
+  "original_offset1e8_generate": "ERROR: block: 反時計回りの閉輪郭が必要です。",
+  "area_only_offset1e8_generate": "OK: 32 節点 / 16 要素",
+  "area_only_offset1e8_solve": "ERROR: 基本解の評価点が一致しています。特異積分が必要です。",
+  "number_formats": [
+    100000000.01041667,
+    "100000000.010417",
+    "1.0000000001041700E+08",
+    "100000000.010417"
+  ]
+}

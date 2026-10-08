@@ -1,2 +1,2 @@
 ExcelのVBA解析実行で解析できます。解析後のJSON・CSV出力は境界・内部場・report.jsonも保存します。
-元Pythonで計算する場合: python run_bem.py "C:\Users\link_\Downloads\BEM\outputs\bem_vba_stage3\example\model.json" --out "C:\Users\link_\Downloads\BEM\outputs\bem_vba_stage3\example"
+元Pythonで計算する場合: python run_bem.py "C:\Users\link_\Downloads\BEM\github_verified\outputs\bem_vba_stage3\example\model.json" --out "C:\Users\link_\Downloads\BEM\github_verified\outputs\bem_vba_stage3\example"

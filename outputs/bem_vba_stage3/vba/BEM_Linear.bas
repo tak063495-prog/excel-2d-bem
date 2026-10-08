@@ -57,7 +57,7 @@ Public Sub BuildPreconditioner()
     Dim au() As Long, at() As Long, auf() As Double, atf() As Double, paired() As Boolean
     Set Blocks = New Collection: Set first = CreateObject("Scripting.Dictionary")
     For Each name In SolveData.keys
-        Set sr = SolveData(name): d = sr.Ref.Dimension
+        Set sr = SolveData(name): d = sr.Ref.dimension
         dg = sr.DiagG: dh = sr.DiagH: umap = sr.umap: tmap = sr.tmap: uf = sr.UFactor: tf = sr.TFactor: paired = sr.paired
         For field = 1 To sr.NF
             If paired(field) Then

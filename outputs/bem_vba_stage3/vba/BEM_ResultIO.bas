@@ -18,7 +18,7 @@ Public Sub SaveSolvedResults(ByVal folder As String)
     If last >= FIRST_ROW Then interior = WS("“à“_Œ‹‰Ê").Range("A6:Q" & last).Value2
     Set reports = New Collection
     For Each name In SolveData.keys
-        Set sr = SolveData(name): d = sr.Ref.Dimension: uv = sr.u: tv = sr.t: xyz = sr.x
+        Set sr = SolveData(name): d = sr.Ref.dimension: uv = sr.u: tv = sr.t: xyz = sr.x
         Set lines = New Collection: Set header = New Collection
         For j = 0 To d - 1: header.Add axes(j) & "_m": Next j
         For j = 0 To d - 1: header.Add "u" & axes(j) & "_m": Next j
@@ -26,7 +26,7 @@ Public Sub SaveSolvedResults(ByVal folder As String)
         lines.Add JoinCollection(header, ",")
         For i = 1 To sr.NF
             Set cols = New Collection
-            For j = 1 To d: cols.Add JNum(xyz(i, j)): Next j
+            For j = 1 To d: cols.Add JNum(sr.WorldCoordinate(i, j)): Next j
             For j = 1 To d: cols.Add JNum(uv((i - 1) * d + j)): Next j
             For j = 1 To d: cols.Add JNum(tv((i - 1) * d + j)): Next j
             lines.Add JoinCollection(cols, ",")
@@ -60,7 +60,7 @@ Public Sub SaveSolvedResults(ByVal folder As String)
             WriteUTF8 fso.BuildPath(folder, CStr(name) & "_interior.csv"), JoinCollection(lines, vbCrLf) & vbCrLf
         End If
         If sr.backend = "fmm" Then opStats = sr.Fmm.StatsJSON Else opStats = "{""backend"":""dense"",""elements"":" & sr.Ref.elements.count & ",""field_nodes"":" & sr.NF & ",""matrix_MB"":" & JNum(16# * sr.ND * sr.ND / 1048576) & "}"
-        reports.Add "{""name"":" & JQuote(CStr(name)) & ",""material"":{""E"":" & JNum(sr.Ref.Young) & ",""nu"":" & JNum(sr.Ref.Poisson) & "},""element_order"":" & sr.Ref.ElementOrder & ",""elements"":" & sr.Ref.elements.count & ",""field_nodes"":" & sr.NF & ",""selection"":" & sr.SelectionJSON & ",""operator"":" & opStats & ",""resultant_traction_kN"":" & ResultantJSON(sr) & ",""resultant_units"":" & JQuote(IIf(sr.Ref.Dimension = 2, "kN/m of out-of-plane length", "kN")) & ",""interior_reports"": [" & JoinCollection(checks, ",") & "]}"
+        reports.Add "{""name"":" & JQuote(CStr(name)) & ",""material"":{""E"":" & JNum(sr.Ref.Young) & ",""nu"":" & JNum(sr.Ref.Poisson) & "},""element_order"":" & sr.Ref.ElementOrder & ",""elements"":" & sr.Ref.elements.count & ",""field_nodes"":" & sr.NF & ",""selection"":" & sr.SelectionJSON & ",""operator"":" & opStats & ",""resultant_traction_kN"":" & ResultantJSON(sr) & ",""resultant_units"":" & JQuote(IIf(sr.Ref.dimension = 2, "kN/m of out-of-plane length", "kN")) & ",""interior_reports"": [" & JoinCollection(checks, ",") & "]}"
     Next name
     summary = "{""backend"":" & JQuote(SolveBackend) & ",""method"":" & JQuote(LinearMethod) & ",""gmres_info"":" & SolveLinearInfo & ",""iterations"":" & SolveIterations & ",""restart_cycles"":" & SolveCycles & ",""error_code"":" & JQuote(IIf(SolveConverged, "OK", "LINEAR_SOLVE_TOLERANCE_UNMET")) & ",""residual_normalization"":""RHS; absolute-term scale when RHS is below arithmetic roundoff"",""converged"":" & JSONBool(SolveConverged) & ",""true_relative_residual"":" & JNum(SolveResidual) & ",""DOF"":" & SolveDOF & ",""seconds"":" & JNum(SolveSeconds)
     summary = summary & ",""interface_displacement_jump_max"":" & JNum(InterfaceJump) & ",""interface_traction_imbalance_max"":" & JNum(InterfaceImbalance) & "}"

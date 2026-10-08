@@ -38,7 +38,7 @@ Public Sub SelectOperator(ByVal sr As CSolveRegion, ByRef remainingMB As Double)
     Dim sources() As Long, targets() As Long, start As Double, selected As String, denseMB As Double, fmmMB As Double, cacheMB As Double
     Dim denseAssembly As Double, nearTime As Double, nearSampleEntries As Double, denseMV As Double, farMV As Double, transferMV As Double, nearMV As Double, generation As Double
     Dim denseSeconds As Double, fmmSeconds As Double, calibration As Double, denseAllowed As Boolean, fmmAllowed As Boolean
-    d = sr.Ref.Dimension: n = sr.NF: q = FmmOrder ^ d: nc = d + d * d: start = Timer
+    d = sr.Ref.dimension: n = sr.NF: q = FmmOrder ^ d: nc = d + d * d: start = Timer
     Set plan = New CFmmOperator: plan.InitializePlan sr
     denseMB = plan.DenseEstimateMB: cacheMB = MinDouble(FmmCacheMB, 0.2 * remainingMB): fmmMB = plan.FmmEstimateMB(cacheMB)
     denseAllowed = denseMB <= remainingMB And sr.ND <= MaxUnknowns
@@ -79,7 +79,7 @@ Public Sub SelectOperator(ByVal sr As CSolveRegion, ByRef remainingMB As Double)
             selected = IIf(denseSeconds <= fmmSeconds, "dense", "fmm")
         End If
     End If
-    calibration = Elapsed(start): sr.backend = selected
+    calibration = Elapsed(start): sr.Backend = selected
     sr.EstimatedMB = IIf(selected = "dense", denseMB, fmmMB): remainingMB = remainingMB - sr.EstimatedMB
     sr.SelectionJSON = "{""selected"":" & JQuote(selected) & ",""dense_estimated_seconds"":" & JNum(denseSeconds) & ",""fmm_estimated_seconds"":" & JNum(fmmSeconds)
     sr.SelectionJSON = sr.SelectionJSON & ",""dense_estimated_MB"":" & JNum(denseMB) & ",""fmm_estimated_MB"":" & JNum(fmmMB) & ",""selection_seconds"":" & JNum(calibration) & ",""expected_iterations"":" & ExpectedIterations

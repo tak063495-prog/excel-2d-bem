@@ -71,11 +71,11 @@ Private Function EvaluatePoint(ByVal sr As CSolveRegion, ByVal pointIndex As Lon
     Dim good As Boolean, hasValue As Boolean, hasPrevious As Boolean, hasEstimate As Boolean, passed As Long, available As Boolean, allGood As Boolean, nvalues As Long, stress(1 To 3, 1 To 3) As Double
     Dim uError As Double, stressError As Double, elementError As Double, errorCode As String, reason As String, details As Collection, estimated As Collection, elementsDE As Long, switched As Boolean
     d = sr.Ref.Dimension: k = sr.Ref.FieldCount: point = sr.Ref.Points(pointIndex): nvalues = d + d * d + IIf(d = 2, 1, 0)
-    For i = 1 To d: x(i) = point(i - 1): Next i
+    For i = 1 To d: x(i) = point(i - 1) - sr.FrameOrigin(i - 1): Next i
     ReDim s(0 To sr.Ref.Elements.Count - 1): ReDim t(0 To sr.Ref.Elements.Count - 1): ReDim distances(0 To sr.Ref.Elements.Count - 1)
     ReDim accumulated(1 To nvalues): ReDim errors(1 To nvalues): nearestDistance = 1E+250
-    row = Array(sr.Ref.RegionName, sr.Ref.PointIds(pointIndex), x(1), x(2), Empty, Empty, Empty, Empty, Empty, Empty, Empty, Empty, Empty, Empty, False, "INVALID_INTERIOR_POINT", False)
-    If d = 3 Then row(4) = x(3)
+    row = Array(sr.Ref.RegionName, sr.Ref.PointIds(pointIndex), point(0), point(1), Empty, Empty, Empty, Empty, Empty, Empty, Empty, Empty, Empty, Empty, False, "INVALID_INTERIOR_POINT", False)
+    If d = 3 Then row(4) = point(2)
     For e = 0 To sr.Ref.Elements.Count - 1
         Set geom = sr.Geometries(e + 1): ClosestPoint geom, x, s(e), t(e), distances(e)
         If distances(e) / geom.Length <= InteriorMinDistanceRatio Then

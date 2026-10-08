@@ -14,6 +14,7 @@ Public NuEff As Double
 Public Lambda As Double
 Public MeshScale As Double
 Public IsPlaneStrain As Boolean
+Public FrameOrigin As Variant
 Public X As Variant
 Public Normal As Variant
 Public G As Variant
@@ -34,6 +35,11 @@ Public DiagG As Variant, DiagH As Variant
 Public SelectionJSON As String
 Public EstimatedMB As Double
 
+Private Sub Class_Initialize()
+    'Standalone callers use world coordinates until a solver frame is assigned.
+    FrameOrigin = Array(0#, 0#, 0#)
+End Sub
+
 Public Sub AllocateFields()
     Dim d As Long: d = Ref.Dimension
     ReDim X(1 To NF, 1 To d) As Double: ReDim Normal(1 To NF, 1 To d) As Double
@@ -49,6 +55,9 @@ End Sub
 Public Sub SetField(ByVal field As Long, ByVal axis As Long, ByVal position As Double, ByVal direction As Double)
     X(field, axis) = position: Normal(field, axis) = direction
 End Sub
+Public Function WorldCoordinate(ByVal field As Long, ByVal axis As Long) As Double
+    WorldCoordinate = X(field, axis) + FrameOrigin(axis - 1)
+End Function
 Public Sub SetInterface(ByVal field As Long, ByVal firstU As Long, ByVal firstT As Long, ByVal factor As Double)
     Dim axis As Long, index As Long
     Paired(field) = True

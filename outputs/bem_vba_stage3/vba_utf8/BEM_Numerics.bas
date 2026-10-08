@@ -117,10 +117,10 @@ Public Sub MapGeometry(ByVal g As CElementData, ByVal a As Double, ByVal b As Do
         End If
     End If
     For j = 1 To 3
-        point(j) = 0: ds(j) = 0: dt(j) = 0
+        point(j) = coords(1, j): ds(j) = 0: dt(j) = 0
         For i = 1 To g.NG
-            point(j) = point(j) + n(i) * coords(i, j)
-            ds(j) = ds(j) + da(i) * coords(i, j): dt(j) = dt(j) + db(i) * coords(i, j)
+            point(j) = point(j) + n(i) * (coords(i, j) - coords(1, j))
+            ds(j) = ds(j) + da(i) * (coords(i, j) - coords(1, j)): dt(j) = dt(j) + db(i) * (coords(i, j) - coords(1, j))
         Next i
     Next j
     If g.D = 2 Then

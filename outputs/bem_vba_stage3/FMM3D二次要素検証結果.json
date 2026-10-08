@@ -1,6 +1,7 @@
 {
-  "test_count": 16,
+  "verified_on": "2026-10-09",
   "all_passed": true,
+  "test_count": 16,
   "tests": [
     {
       "test": "Chebyshev basis 2D p=2",
@@ -113,14 +114,14 @@
       "detail": {
         "DOF": 1224,
         "far_pairs": 32,
-        "seconds": 88.35901975631714,
+        "seconds": 88.50675249099731,
         "VBA_iterations": 45,
-        "VBA_residual": 4.55570965711975e-11,
+        "VBA_residual": 4.5556880390079214e-11,
         "Python_residual": 4.555736280442097e-11,
-        "operator_relative_max_difference": 3.873637869797528e-14,
-        "boundary_u_max_difference_m": 1.700029006457271e-16,
-        "boundary_t_max_difference_kPa": 3.0732326405935595e-12,
-        "interior_stress_max_difference_kPa": 6.821210263296962e-13,
+        "operator_relative_max_difference": 3.85811647126499e-14,
+        "boundary_u_max_difference_m": 1.3183898417423734e-16,
+        "boundary_t_max_difference_kPa": 3.9522309036588155e-12,
+        "interior_stress_max_difference_kPa": 4.689582056016661e-13,
         "dense_arrays_empty": true
       }
     }

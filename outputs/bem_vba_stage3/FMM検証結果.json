@@ -114,14 +114,14 @@
       "detail": {
         "DOF": 32,
         "far_pairs": 0,
-        "seconds": 0.13634300231933594,
+        "seconds": 0.18784594535827637,
         "VBA_iterations": 22,
-        "VBA_residual": 1.79045307504867e-11,
+        "VBA_residual": 1.790451762243539e-11,
         "Python_residual": 1.7904462448923612e-11,
         "operator_relative_max_difference": 1.6687451424594283e-15,
-        "boundary_u_max_difference_m": 4.7704895589362195e-18,
-        "boundary_t_max_difference_kPa": 1.4210854715202004e-13,
-        "interior_stress_max_difference_kPa": 4.263256414560601e-14,
+        "boundary_u_max_difference_m": 6.071532165918825e-18,
+        "boundary_t_max_difference_kPa": 1.9895196601282805e-13,
+        "interior_stress_max_difference_kPa": 8.526512829121202e-14,
         "dense_arrays_empty": true
       }
     },
@@ -131,14 +131,14 @@
       "detail": {
         "DOF": 384,
         "far_pairs": 60,
-        "seconds": 3.724715232849121,
+        "seconds": 3.8223018646240234,
         "VBA_iterations": 40,
-        "VBA_residual": 4.42138044825652e-11,
+        "VBA_residual": 4.4213863171581424e-11,
         "Python_residual": 7.56908511164113e-12,
-        "operator_relative_max_difference": 2.382982114974107e-14,
-        "boundary_u_max_difference_m": 3.6516362850180784e-13,
-        "boundary_t_max_difference_kPa": 1.0442792586218275e-07,
-        "interior_stress_max_difference_kPa": 2.836660906169186e-10,
+        "operator_relative_max_difference": 2.2793049997724856e-14,
+        "boundary_u_max_difference_m": 3.651744705235327e-13,
+        "boundary_t_max_difference_kPa": 1.0442902009799582e-07,
+        "interior_stress_max_difference_kPa": 2.8366120563561026e-10,
         "dense_arrays_empty": true
       }
     },
@@ -148,14 +148,14 @@
       "detail": {
         "DOF": 1536,
         "far_pairs": 212,
-        "seconds": 18.65001368522644,
+        "seconds": 18.98535394668579,
         "VBA_iterations": 56,
-        "VBA_residual": 6.79975915715076e-11,
+        "VBA_residual": 6.799754407329107e-11,
         "Python_residual": 1.7453621038298978e-11,
-        "operator_relative_max_difference": 1.0725111798349521e-13,
-        "boundary_u_max_difference_m": 5.80261966948159e-13,
-        "boundary_t_max_difference_kPa": 3.0315151461866863e-07,
-        "interior_stress_max_difference_kPa": 6.19475082341836e-10,
+        "operator_relative_max_difference": 9.157865557746636e-14,
+        "boundary_u_max_difference_m": 5.802589311820761e-13,
+        "boundary_t_max_difference_kPa": 3.031505486630545e-07,
+        "interior_stress_max_difference_kPa": 6.194612600651794e-10,
         "dense_arrays_empty": true
       }
     },
@@ -165,14 +165,14 @@
       "detail": {
         "DOF": 288,
         "far_pairs": 196,
-        "seconds": 6.586350917816162,
+        "seconds": 6.483415365219116,
         "VBA_iterations": 39,
-        "VBA_residual": 6.19859098872869e-11,
-        "Python_residual": 6.198583598383121e-11,
-        "operator_relative_max_difference": 1.3680569222917149e-14,
-        "boundary_u_max_difference_m": 7.15573433840433e-18,
-        "boundary_t_max_difference_kPa": 3.439026841078885e-12,
-        "interior_stress_max_difference_kPa": 1.4210854715202004e-14,
+        "VBA_residual": 6.198582440219136e-11,
+        "Python_residual": 6.198585804693196e-11,
+        "operator_relative_max_difference": 1.4173221300196718e-14,
+        "boundary_u_max_difference_m": 6.071532165918825e-18,
+        "boundary_t_max_difference_kPa": 3.538502824085299e-12,
+        "interior_stress_max_difference_kPa": 1.7319479184152442e-14,
         "dense_arrays_empty": true
       }
     },
@@ -182,14 +182,14 @@
       "detail": {
         "DOF": 384,
         "far_pairs": 232,
-        "seconds": 10.339092016220093,
+        "seconds": 9.79378890991211,
         "VBA_iterations": 47,
-        "VBA_residual": 3.99360732961961e-11,
+        "VBA_residual": 3.993656324283546e-11,
         "Python_residual": 3.9936811369117685e-11,
-        "operator_relative_max_difference": 1.594338789555588e-14,
-        "boundary_u_max_difference_m": 1.0408340855860843e-17,
-        "boundary_t_max_difference_kPa": 5.656808355070098e-12,
-        "interior_stress_max_difference_kPa": 2.2737367544323206e-13,
+        "operator_relative_max_difference": 1.3756545710585144e-14,
+        "boundary_u_max_difference_m": 1.5612511283791264e-17,
+        "boundary_t_max_difference_kPa": 7.34089178333619e-12,
+        "interior_stress_max_difference_kPa": 1.4210854715202004e-13,
         "dense_arrays_empty": true
       }
     },
@@ -199,13 +199,13 @@
       "detail": {
         "DOF": 36,
         "far_pairs": 0,
-        "seconds": 1.0946362018585205,
+        "seconds": 1.1059515476226807,
         "VBA_iterations": 17,
-        "VBA_residual": 2.30708005619605e-12,
+        "VBA_residual": 2.3070398058449435e-12,
         "Python_residual": 2.307037527399967e-12,
         "operator_relative_max_difference": 1.2179156692160662e-15,
-        "boundary_u_max_difference_m": 3.469446951953614e-18,
-        "boundary_t_max_difference_kPa": 4.263256414560601e-14,
+        "boundary_u_max_difference_m": 5.637851296924623e-18,
+        "boundary_t_max_difference_kPa": 3.9968028886505635e-14,
         "interior_stress_max_difference_kPa": 8.526512829121202e-14,
         "dense_arrays_empty": true
       }
@@ -216,14 +216,14 @@
       "detail": {
         "DOF": 216,
         "far_pairs": 0,
-        "seconds": 8.610769033432007,
+        "seconds": 8.801134824752808,
         "VBA_iterations": 31,
-        "VBA_residual": 5.31916537987969e-11,
+        "VBA_residual": 5.319168063424792e-11,
         "Python_residual": 1.865427267371955e-11,
-        "operator_relative_max_difference": 8.547626941272382e-15,
-        "boundary_u_max_difference_m": 2.648824085418888e-13,
-        "boundary_t_max_difference_kPa": 5.109886602473182e-09,
-        "interior_stress_max_difference_kPa": 1.5741373482480725e-09,
+        "operator_relative_max_difference": 8.611894813011273e-15,
+        "boundary_u_max_difference_m": 2.6488273380254057e-13,
+        "boundary_t_max_difference_kPa": 5.109820269791647e-09,
+        "interior_stress_max_difference_kPa": 1.5741451753203961e-09,
         "dense_arrays_empty": true
       }
     },
@@ -233,14 +233,14 @@
       "detail": {
         "DOF": 72,
         "far_pairs": 0,
-        "seconds": 2.1672041416168213,
+        "seconds": 2.1999518871307373,
         "VBA_iterations": 24,
-        "VBA_residual": 9.44514345524834e-11,
+        "VBA_residual": 9.445134679952965e-11,
         "Python_residual": 9.445148301523566e-11,
         "operator_relative_max_difference": 1.2657492249473736e-15,
-        "boundary_u_max_difference_m": 9.540979117872439e-18,
-        "boundary_t_max_difference_kPa": 8.526512829121202e-14,
-        "interior_stress_max_difference_kPa": 1.9895196601282805e-13,
+        "boundary_u_max_difference_m": 8.673617379884035e-18,
+        "boundary_t_max_difference_kPa": 7.105427357601002e-14,
+        "interior_stress_max_difference_kPa": 1.7053025658242404e-13,
         "dense_arrays_empty": true
       }
     },
@@ -250,14 +250,14 @@
       "detail": {
         "DOF": 432,
         "far_pairs": 0,
-        "seconds": 17.465609788894653,
+        "seconds": 17.78972840309143,
         "VBA_iterations": 38,
-        "VBA_residual": 4.69837523006232e-11,
+        "VBA_residual": 4.698376951693341e-11,
         "Python_residual": 4.6983505161693605e-11,
-        "operator_relative_max_difference": 8.547626941272382e-15,
-        "boundary_u_max_difference_m": 1.3010426069826053e-17,
-        "boundary_t_max_difference_kPa": 9.521272659185342e-13,
-        "interior_stress_max_difference_kPa": 2.7000623958883807e-13,
+        "operator_relative_max_difference": 8.782706065662923e-15,
+        "boundary_u_max_difference_m": 1.214306433183765e-17,
+        "boundary_t_max_difference_kPa": 8.952838470577262e-13,
+        "interior_stress_max_difference_kPa": 2.2737367544323206e-13,
         "dense_arrays_empty": true
       }
     },
@@ -267,14 +267,14 @@
       "detail": {
         "DOF": 576,
         "far_pairs": 56,
-        "seconds": 49.16932916641235,
+        "seconds": 49.23354172706604,
         "VBA_iterations": 30,
-        "VBA_residual": 5.93353091536323e-11,
+        "VBA_residual": 5.933532978709796e-11,
         "Python_residual": 5.933534735458022e-11,
-        "operator_relative_max_difference": 2.3380672854694266e-14,
+        "operator_relative_max_difference": 2.307194918143686e-14,
         "boundary_u_max_difference_m": 6.5052130349130266e-18,
-        "boundary_t_max_difference_kPa": 2.2879476091475226e-12,
-        "interior_stress_max_difference_kPa": 2.842170943040401e-14,
+        "boundary_t_max_difference_kPa": 2.6574298317427747e-12,
+        "interior_stress_max_difference_kPa": 5.684341886080802e-14,
         "dense_arrays_empty": true
       }
     },
@@ -284,14 +284,14 @@
       "detail": {
         "DOF": 1224,
         "far_pairs": 32,
-        "seconds": 85.8061203956604,
+        "seconds": 88.50675249099731,
         "VBA_iterations": 45,
-        "VBA_residual": 4.55570965711975e-11,
+        "VBA_residual": 4.5556880390079214e-11,
         "Python_residual": 4.555736280442097e-11,
-        "operator_relative_max_difference": 3.873637869797528e-14,
-        "boundary_u_max_difference_m": 1.700029006457271e-16,
-        "boundary_t_max_difference_kPa": 3.0732326405935595e-12,
-        "interior_stress_max_difference_kPa": 6.821210263296962e-13,
+        "operator_relative_max_difference": 3.85811647126499e-14,
+        "boundary_u_max_difference_m": 1.3183898417423734e-16,
+        "boundary_t_max_difference_kPa": 3.9522309036588155e-12,
+        "interior_stress_max_difference_kPa": 4.689582056016661e-13,
         "dense_arrays_empty": true
       }
     },
@@ -301,14 +301,14 @@
       "detail": {
         "DOF": 144,
         "far_pairs": 4,
-        "seconds": 1.011038064956665,
+        "seconds": 1.0238993167877197,
         "VBA_iterations": 38,
-        "VBA_residual": 4.08007067712339e-18,
-        "Python_residual": 7.497478393595616e-11,
-        "operator_relative_max_difference": 1.508441124151548e-14,
+        "VBA_residual": 4.028168883081644e-18,
+        "Python_residual": 8.682957462832365e-11,
+        "operator_relative_max_difference": 8.969109386847025e-15,
         "boundary_u_max_difference_m": 0.0,
-        "boundary_t_max_difference_kPa": 1.8665648588852034e-12,
-        "interior_stress_max_difference_kPa": 6.350310933522156e-15,
+        "boundary_t_max_difference_kPa": 1.9123568043965158e-12,
+        "interior_stress_max_difference_kPa": 6.400521698352791e-15,
         "dense_arrays_empty": true
       }
     },
@@ -318,16 +318,17 @@
       "detail": {
         "DOF": 144,
         "far_pairs": 0,
-        "seconds": 4.205167293548584,
+        "seconds": 4.337849855422974,
         "VBA_iterations": 26,
-        "VBA_residual": 4.33400518299771e-18,
-        "Python_residual": 5.625033376844951e-11,
-        "operator_relative_max_difference": 5.245481207732261e-15,
+        "VBA_residual": 4.11854216191127e-18,
+        "Python_residual": 5.7805936017168326e-11,
+        "operator_relative_max_difference": 5.168308160460029e-15,
         "boundary_u_max_difference_m": 0.0,
-        "boundary_t_max_difference_kPa": 4.2068015809050293e-13,
-        "interior_stress_max_difference_kPa": 1.7784020080939132e-14,
+        "boundary_t_max_difference_kPa": 3.0795159716311197e-13,
+        "interior_stress_max_difference_kPa": 1.0927699151859765e-14,
         "dense_arrays_empty": true
       }
     }
-  ]
+  ],
+  "verified_on": "2026-10-09"
 }

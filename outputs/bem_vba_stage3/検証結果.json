@@ -1,7 +1,7 @@
 {
-  "verified_on": "2026-10-08",
+  "verified_on": "2026-10-09",
   "excel_version": "16.0",
-  "pass_count": 99,
+  "pass_count": 115,
   "all_passed": true,
   "tests": [
     {
@@ -130,14 +130,14 @@
       "detail": {
         "DOF": 32,
         "far_pairs": 0,
-        "seconds": 0.13634300231933594,
+        "seconds": 0.18784594535827637,
         "VBA_iterations": 22,
-        "VBA_residual": 1.79045307504867e-11,
+        "VBA_residual": 1.790451762243539e-11,
         "Python_residual": 1.7904462448923612e-11,
         "operator_relative_max_difference": 1.6687451424594283e-15,
-        "boundary_u_max_difference_m": 4.7704895589362195e-18,
-        "boundary_t_max_difference_kPa": 1.4210854715202004e-13,
-        "interior_stress_max_difference_kPa": 4.263256414560601e-14,
+        "boundary_u_max_difference_m": 6.071532165918825e-18,
+        "boundary_t_max_difference_kPa": 1.9895196601282805e-13,
+        "interior_stress_max_difference_kPa": 8.526512829121202e-14,
         "dense_arrays_empty": true
       },
       "source_report": "FMM検証結果.json"
@@ -148,14 +148,14 @@
       "detail": {
         "DOF": 384,
         "far_pairs": 60,
-        "seconds": 3.724715232849121,
+        "seconds": 3.8223018646240234,
         "VBA_iterations": 40,
-        "VBA_residual": 4.42138044825652e-11,
+        "VBA_residual": 4.4213863171581424e-11,
         "Python_residual": 7.56908511164113e-12,
-        "operator_relative_max_difference": 2.382982114974107e-14,
-        "boundary_u_max_difference_m": 3.6516362850180784e-13,
-        "boundary_t_max_difference_kPa": 1.0442792586218275e-07,
-        "interior_stress_max_difference_kPa": 2.836660906169186e-10,
+        "operator_relative_max_difference": 2.2793049997724856e-14,
+        "boundary_u_max_difference_m": 3.651744705235327e-13,
+        "boundary_t_max_difference_kPa": 1.0442902009799582e-07,
+        "interior_stress_max_difference_kPa": 2.8366120563561026e-10,
         "dense_arrays_empty": true
       },
       "source_report": "FMM検証結果.json"
@@ -166,14 +166,14 @@
       "detail": {
         "DOF": 1536,
         "far_pairs": 212,
-        "seconds": 18.65001368522644,
+        "seconds": 18.98535394668579,
         "VBA_iterations": 56,
-        "VBA_residual": 6.79975915715076e-11,
+        "VBA_residual": 6.799754407329107e-11,
         "Python_residual": 1.7453621038298978e-11,
-        "operator_relative_max_difference": 1.0725111798349521e-13,
-        "boundary_u_max_difference_m": 5.80261966948159e-13,
-        "boundary_t_max_difference_kPa": 3.0315151461866863e-07,
-        "interior_stress_max_difference_kPa": 6.19475082341836e-10,
+        "operator_relative_max_difference": 9.157865557746636e-14,
+        "boundary_u_max_difference_m": 5.802589311820761e-13,
+        "boundary_t_max_difference_kPa": 3.031505486630545e-07,
+        "interior_stress_max_difference_kPa": 6.194612600651794e-10,
         "dense_arrays_empty": true
       },
       "source_report": "FMM検証結果.json"
@@ -184,14 +184,14 @@
       "detail": {
         "DOF": 288,
         "far_pairs": 196,
-        "seconds": 6.586350917816162,
+        "seconds": 6.483415365219116,
         "VBA_iterations": 39,
-        "VBA_residual": 6.19859098872869e-11,
-        "Python_residual": 6.198583598383121e-11,
-        "operator_relative_max_difference": 1.3680569222917149e-14,
-        "boundary_u_max_difference_m": 7.15573433840433e-18,
-        "boundary_t_max_difference_kPa": 3.439026841078885e-12,
-        "interior_stress_max_difference_kPa": 1.4210854715202004e-14,
+        "VBA_residual": 6.198582440219136e-11,
+        "Python_residual": 6.198585804693196e-11,
+        "operator_relative_max_difference": 1.4173221300196718e-14,
+        "boundary_u_max_difference_m": 6.071532165918825e-18,
+        "boundary_t_max_difference_kPa": 3.538502824085299e-12,
+        "interior_stress_max_difference_kPa": 1.7319479184152442e-14,
         "dense_arrays_empty": true
       },
       "source_report": "FMM検証結果.json"
@@ -202,14 +202,14 @@
       "detail": {
         "DOF": 384,
         "far_pairs": 232,
-        "seconds": 10.339092016220093,
+        "seconds": 9.79378890991211,
         "VBA_iterations": 47,
-        "VBA_residual": 3.99360732961961e-11,
+        "VBA_residual": 3.993656324283546e-11,
         "Python_residual": 3.9936811369117685e-11,
-        "operator_relative_max_difference": 1.594338789555588e-14,
-        "boundary_u_max_difference_m": 1.0408340855860843e-17,
-        "boundary_t_max_difference_kPa": 5.656808355070098e-12,
-        "interior_stress_max_difference_kPa": 2.2737367544323206e-13,
+        "operator_relative_max_difference": 1.3756545710585144e-14,
+        "boundary_u_max_difference_m": 1.5612511283791264e-17,
+        "boundary_t_max_difference_kPa": 7.34089178333619e-12,
+        "interior_stress_max_difference_kPa": 1.4210854715202004e-13,
         "dense_arrays_empty": true
       },
       "source_report": "FMM検証結果.json"
@@ -220,13 +220,13 @@
       "detail": {
         "DOF": 36,
         "far_pairs": 0,
-        "seconds": 1.0946362018585205,
+        "seconds": 1.1059515476226807,
         "VBA_iterations": 17,
-        "VBA_residual": 2.30708005619605e-12,
+        "VBA_residual": 2.3070398058449435e-12,
         "Python_residual": 2.307037527399967e-12,
         "operator_relative_max_difference": 1.2179156692160662e-15,
-        "boundary_u_max_difference_m": 3.469446951953614e-18,
-        "boundary_t_max_difference_kPa": 4.263256414560601e-14,
+        "boundary_u_max_difference_m": 5.637851296924623e-18,
+        "boundary_t_max_difference_kPa": 3.9968028886505635e-14,
         "interior_stress_max_difference_kPa": 8.526512829121202e-14,
         "dense_arrays_empty": true
       },
@@ -238,14 +238,14 @@
       "detail": {
         "DOF": 216,
         "far_pairs": 0,
-        "seconds": 8.610769033432007,
+        "seconds": 8.801134824752808,
         "VBA_iterations": 31,
-        "VBA_residual": 5.31916537987969e-11,
+        "VBA_residual": 5.319168063424792e-11,
         "Python_residual": 1.865427267371955e-11,
-        "operator_relative_max_difference": 8.547626941272382e-15,
-        "boundary_u_max_difference_m": 2.648824085418888e-13,
-        "boundary_t_max_difference_kPa": 5.109886602473182e-09,
-        "interior_stress_max_difference_kPa": 1.5741373482480725e-09,
+        "operator_relative_max_difference": 8.611894813011273e-15,
+        "boundary_u_max_difference_m": 2.6488273380254057e-13,
+        "boundary_t_max_difference_kPa": 5.109820269791647e-09,
+        "interior_stress_max_difference_kPa": 1.5741451753203961e-09,
         "dense_arrays_empty": true
       },
       "source_report": "FMM検証結果.json"
@@ -256,14 +256,14 @@
       "detail": {
         "DOF": 72,
         "far_pairs": 0,
-        "seconds": 2.1672041416168213,
+        "seconds": 2.1999518871307373,
         "VBA_iterations": 24,
-        "VBA_residual": 9.44514345524834e-11,
+        "VBA_residual": 9.445134679952965e-11,
         "Python_residual": 9.445148301523566e-11,
         "operator_relative_max_difference": 1.2657492249473736e-15,
-        "boundary_u_max_difference_m": 9.540979117872439e-18,
-        "boundary_t_max_difference_kPa": 8.526512829121202e-14,
-        "interior_stress_max_difference_kPa": 1.9895196601282805e-13,
+        "boundary_u_max_difference_m": 8.673617379884035e-18,
+        "boundary_t_max_difference_kPa": 7.105427357601002e-14,
+        "interior_stress_max_difference_kPa": 1.7053025658242404e-13,
         "dense_arrays_empty": true
       },
       "source_report": "FMM検証結果.json"
@@ -274,14 +274,14 @@
       "detail": {
         "DOF": 432,
         "far_pairs": 0,
-        "seconds": 17.465609788894653,
+        "seconds": 17.78972840309143,
         "VBA_iterations": 38,
-        "VBA_residual": 4.69837523006232e-11,
+        "VBA_residual": 4.698376951693341e-11,
         "Python_residual": 4.6983505161693605e-11,
-        "operator_relative_max_difference": 8.547626941272382e-15,
-        "boundary_u_max_difference_m": 1.3010426069826053e-17,
-        "boundary_t_max_difference_kPa": 9.521272659185342e-13,
-        "interior_stress_max_difference_kPa": 2.7000623958883807e-13,
+        "operator_relative_max_difference": 8.782706065662923e-15,
+        "boundary_u_max_difference_m": 1.214306433183765e-17,
+        "boundary_t_max_difference_kPa": 8.952838470577262e-13,
+        "interior_stress_max_difference_kPa": 2.2737367544323206e-13,
         "dense_arrays_empty": true
       },
       "source_report": "FMM検証結果.json"
@@ -292,14 +292,14 @@
       "detail": {
         "DOF": 576,
         "far_pairs": 56,
-        "seconds": 49.16932916641235,
+        "seconds": 49.23354172706604,
         "VBA_iterations": 30,
-        "VBA_residual": 5.93353091536323e-11,
+        "VBA_residual": 5.933532978709796e-11,
         "Python_residual": 5.933534735458022e-11,
-        "operator_relative_max_difference": 2.3380672854694266e-14,
+        "operator_relative_max_difference": 2.307194918143686e-14,
         "boundary_u_max_difference_m": 6.5052130349130266e-18,
-        "boundary_t_max_difference_kPa": 2.2879476091475226e-12,
-        "interior_stress_max_difference_kPa": 2.842170943040401e-14,
+        "boundary_t_max_difference_kPa": 2.6574298317427747e-12,
+        "interior_stress_max_difference_kPa": 5.684341886080802e-14,
         "dense_arrays_empty": true
       },
       "source_report": "FMM検証結果.json"
@@ -310,14 +310,14 @@
       "detail": {
         "DOF": 1224,
         "far_pairs": 32,
-        "seconds": 85.8061203956604,
+        "seconds": 88.50675249099731,
         "VBA_iterations": 45,
-        "VBA_residual": 4.55570965711975e-11,
+        "VBA_residual": 4.5556880390079214e-11,
         "Python_residual": 4.555736280442097e-11,
-        "operator_relative_max_difference": 3.873637869797528e-14,
-        "boundary_u_max_difference_m": 1.700029006457271e-16,
-        "boundary_t_max_difference_kPa": 3.0732326405935595e-12,
-        "interior_stress_max_difference_kPa": 6.821210263296962e-13,
+        "operator_relative_max_difference": 3.85811647126499e-14,
+        "boundary_u_max_difference_m": 1.3183898417423734e-16,
+        "boundary_t_max_difference_kPa": 3.9522309036588155e-12,
+        "interior_stress_max_difference_kPa": 4.689582056016661e-13,
         "dense_arrays_empty": true
       },
       "source_report": "FMM検証結果.json"
@@ -328,14 +328,14 @@
       "detail": {
         "DOF": 144,
         "far_pairs": 4,
-        "seconds": 1.011038064956665,
+        "seconds": 1.0238993167877197,
         "VBA_iterations": 38,
-        "VBA_residual": 4.08007067712339e-18,
-        "Python_residual": 7.497478393595616e-11,
-        "operator_relative_max_difference": 1.508441124151548e-14,
+        "VBA_residual": 4.028168883081644e-18,
+        "Python_residual": 8.682957462832365e-11,
+        "operator_relative_max_difference": 8.969109386847025e-15,
         "boundary_u_max_difference_m": 0.0,
-        "boundary_t_max_difference_kPa": 1.8665648588852034e-12,
-        "interior_stress_max_difference_kPa": 6.350310933522156e-15,
+        "boundary_t_max_difference_kPa": 1.9123568043965158e-12,
+        "interior_stress_max_difference_kPa": 6.400521698352791e-15,
         "dense_arrays_empty": true
       },
       "source_report": "FMM検証結果.json"
@@ -346,14 +346,14 @@
       "detail": {
         "DOF": 144,
         "far_pairs": 0,
-        "seconds": 4.205167293548584,
+        "seconds": 4.337849855422974,
         "VBA_iterations": 26,
-        "VBA_residual": 4.33400518299771e-18,
-        "Python_residual": 5.625033376844951e-11,
-        "operator_relative_max_difference": 5.245481207732261e-15,
+        "VBA_residual": 4.11854216191127e-18,
+        "Python_residual": 5.7805936017168326e-11,
+        "operator_relative_max_difference": 5.168308160460029e-15,
         "boundary_u_max_difference_m": 0.0,
-        "boundary_t_max_difference_kPa": 4.2068015809050293e-13,
-        "interior_stress_max_difference_kPa": 1.7784020080939132e-14,
+        "boundary_t_max_difference_kPa": 3.0795159716311197e-13,
+        "interior_stress_max_difference_kPa": 1.0927699151859765e-14,
         "dense_arrays_empty": true
       },
       "source_report": "FMM検証結果.json"
@@ -363,7 +363,7 @@
       "status": "PASS",
       "detail": {
         "selected": "dense",
-        "residual": 2.96147862859517e-11,
+        "residual": 2.961471722170062e-11,
         "iterations": 32
       },
       "source_report": "演算選択・出力検証結果.json"
@@ -373,7 +373,7 @@
       "status": "PASS",
       "detail": {
         "selected": "dense",
-        "residual": 9.91432797216705e-16,
+        "residual": 1.0500077040573987e-15,
         "iterations": 0
       },
       "source_report": "演算選択・出力検証結果.json"
@@ -383,7 +383,7 @@
       "status": "PASS",
       "detail": {
         "selected": "dense",
-        "residual": 2.96147862859517e-11,
+        "residual": 2.961471722170062e-11,
         "iterations": 32
       },
       "source_report": "演算選択・出力検証結果.json"
@@ -393,7 +393,7 @@
       "status": "PASS",
       "detail": {
         "selected": "fmm",
-        "residual": 2.96148058459845e-11,
+        "residual": 2.9614822561861546e-11,
         "iterations": 32
       },
       "source_report": "演算選択・出力検証結果.json"
@@ -412,7 +412,7 @@
         "near_pairs": 292,
         "near_entries": 7592,
         "translation_groups": 92,
-        "near_matrix_MB": 0.492893218994141,
+        "near_matrix_MB": 0.4928932189941406,
         "m2l_cache_MB": 0,
         "cache_limit_MB": 0,
         "cache_hits": 0,
@@ -434,7 +434,7 @@
         "near_pairs": 292,
         "near_entries": 7592,
         "translation_groups": 92,
-        "near_matrix_MB": 0.492893218994141,
+        "near_matrix_MB": 0.4928932189941406,
         "m2l_cache_MB": 0.0234375,
         "cache_limit_MB": 0.035,
         "cache_hits": 0,
@@ -490,9 +490,9 @@
         "error_code": "LINEAR_SOLVE_TOLERANCE_UNMET",
         "residual_normalization": "RHS; absolute-term scale when RHS is below arithmetic roundoff",
         "converged": false,
-        "true_relative_residual": 0.744068368013878,
+        "true_relative_residual": 0.7440683680138784,
         "DOF": 288,
-        "seconds": 1.03515625,
+        "seconds": 1.0703125,
         "interface_displacement_jump_max": 0,
         "interface_traction_imbalance_max": 0
       },
@@ -507,13 +507,13 @@
     {
       "test": "explicit internal quadrature gauss",
       "status": "PASS",
-      "detail": "OK: 96 DOF / residual=2.96147862859517E-11",
+      "detail": "OK: 96 DOF / residual=2.9614717221700622E-11",
       "source_report": "演算選択・出力検証結果.json"
     },
     {
       "test": "explicit internal quadrature de",
       "status": "PASS",
-      "detail": "OK: 96 DOF / residual=2.96147862859517E-11",
+      "detail": "OK: 96 DOF / residual=2.9614717221700622E-11",
       "source_report": "演算選択・出力検証結果.json"
     },
     {
@@ -618,9 +618,9 @@
       "test": "near-boundary adaptive fields 2D_RECT",
       "status": "PASS",
       "detail": {
-        "stress_max_difference_kPa": 7.503331289626658e-12,
+        "stress_max_difference_kPa": 4.874323167314287e-12,
         "converged": true,
-        "seconds": 0.06429910659790039
+        "seconds": 0.0697331428527832
       },
       "source_report": "境界近傍・入出力検証結果.json"
     },
@@ -636,9 +636,9 @@
       "test": "near-boundary adaptive fields 2D_CIRCLE",
       "status": "PASS",
       "detail": {
-        "stress_max_difference_kPa": 1.509903313490213e-13,
+        "stress_max_difference_kPa": 2.1760371282653068e-13,
         "converged": true,
-        "seconds": 0.0387272834777832
+        "seconds": 0.04214811325073242
       },
       "source_report": "境界近傍・入出力検証結果.json"
     },
@@ -654,9 +654,9 @@
       "test": "near-boundary adaptive fields 3D_BOX",
       "status": "PASS",
       "detail": {
-        "stress_max_difference_kPa": 6.536993168992922e-13,
+        "stress_max_difference_kPa": 6.821210263296962e-13,
         "converged": true,
-        "seconds": 6.230052709579468
+        "seconds": 6.287060976028442
       },
       "source_report": "境界近傍・入出力検証結果.json"
     },
@@ -664,7 +664,7 @@
       "test": "closest point near 3D_SPHERE",
       "status": "PASS",
       "detail": {
-        "max_distance_difference_m": 4.440892098500626e-16
+        "max_distance_difference_m": 2.220446049250313e-16
       },
       "source_report": "境界近傍・入出力検証結果.json"
     },
@@ -672,9 +672,9 @@
       "test": "near-boundary adaptive fields 3D_SPHERE",
       "status": "PASS",
       "detail": {
-        "stress_max_difference_kPa": 6.252776074688882e-13,
+        "stress_max_difference_kPa": 7.105427357601002e-13,
         "converged": true,
-        "seconds": 8.592279434204102
+        "seconds": 8.747220516204834
       },
       "source_report": "境界近傍・入出力検証結果.json"
     },
@@ -682,7 +682,7 @@
       "test": "VBA solve/export/import 2D",
       "status": "PASS",
       "detail": {
-        "relative_residual": 5.83389367361958e-10,
+        "relative_residual": 5.833892704377359e-10,
         "CSV_schema": "Python compatible"
       },
       "source_report": "境界近傍・入出力検証結果.json"
@@ -691,7 +691,7 @@
       "test": "VBA solve/export/import 3D",
       "status": "PASS",
       "detail": {
-        "relative_residual": 1.62984345122255e-10,
+        "relative_residual": 1.629842277467348e-10,
         "CSV_schema": "Python compatible"
       },
       "source_report": "境界近傍・入出力検証結果.json"
@@ -702,8 +702,8 @@
       "detail": {
         "size_m": 0.001,
         "E_kPa": 30000000.0,
-        "sxx_kPa": 99.99999999532331,
-        "status": "OK: 96 DOF / residual=6.0284996642886E-10"
+        "sxx_kPa": 99.99999999532328,
+        "status": "OK: 96 DOF / residual=6.0285001483075916E-10"
       },
       "source_report": "境界近傍・入出力検証結果.json"
     },
@@ -716,9 +716,9 @@
           "left": "dense",
           "right": "fmm"
         },
-        "residual": 9.49322324330219e-11,
+        "residual": 9.493188615832416e-11,
         "max_u_difference_m": 2.42861286636753e-17,
-        "max_t_difference_kPa": 2.2600532556538155e-11
+        "max_t_difference_kPa": 1.505096047793586e-11
       },
       "source_report": "再確認検証結果.json"
     },
@@ -730,9 +730,9 @@
         "backends": {
           "block": "fmm"
         },
-        "residual": 6.8138987640015e-11,
-        "max_u_difference_m": 3.384701373343457e-13,
-        "max_t_difference_kPa": 4.205894299502688e-08
+        "residual": 6.813887134588154e-11,
+        "max_u_difference_m": 3.3848878561171247e-13,
+        "max_t_difference_kPa": 4.2051709669976844e-08
       },
       "source_report": "再確認検証結果.json"
     },
@@ -744,9 +744,9 @@
         "backends": {
           "block": "fmm"
         },
-        "residual": 7.2710908283233e-11,
-        "max_u_difference_m": 2.1510571102112408e-16,
-        "max_t_difference_kPa": 1.9184653865522705e-12
+        "residual": 7.271099097987504e-11,
+        "max_u_difference_m": 1.734723475976807e-16,
+        "max_t_difference_kPa": 2.647589126492727e-12
       },
       "source_report": "再確認検証結果.json"
     },
@@ -758,9 +758,9 @@
         "backends": {
           "block": "fmm"
         },
-        "residual": 9.05078501770031e-11,
-        "max_u_difference_m": 5.715407314088594e-12,
-        "max_t_difference_kPa": 4.0142211332749866e-08
+        "residual": 9.050781190108265e-11,
+        "max_u_difference_m": 5.7153864974068824e-12,
+        "max_t_difference_kPa": 4.014266608010075e-08
       },
       "source_report": "再確認検証結果.json"
     },
@@ -772,9 +772,9 @@
         "backends": {
           "block": "fmm"
         },
-        "residual": 9.93211478787256e-11,
-        "max_u_difference_m": 5.421010862427522e-18,
-        "max_t_difference_kPa": 3.197442310920451e-13
+        "residual": 9.932105380203253e-11,
+        "max_u_difference_m": 6.7220534694101275e-18,
+        "max_t_difference_kPa": 3.339550858072471e-13
       },
       "source_report": "再確認検証結果.json"
     },
@@ -887,6 +887,134 @@
       "source_report": "再確認検証結果.json"
     },
     {
+      "test": "standalone solver region initializes coordinate frame (runtime error 13)",
+      "status": "PASS",
+      "detail": {},
+      "source_report": "issue1_regression.json"
+    },
+    {
+      "test": "double text round-trip and decimal-comma locale",
+      "status": "PASS",
+      "detail": {
+        "numbers": 3009
+      },
+      "source_report": "issue1_regression.json"
+    },
+    {
+      "test": "large-offset 2D dense order=0 DE=0",
+      "status": "PASS",
+      "detail": {
+        "min_self_distance_m": 6.952709380447786e-10,
+        "residual": 1.790422607185262e-11,
+        "operator_max_difference": 0.0
+      },
+      "source_report": "issue1_regression.json"
+    },
+    {
+      "test": "large-offset 2D dense order=2 DE=3",
+      "status": "PASS",
+      "detail": {
+        "min_self_distance_m": 1.8407497748285095e-13,
+        "residual": 2.961471722170062e-11,
+        "operator_max_difference": 0.0
+      },
+      "source_report": "issue1_regression.json"
+    },
+    {
+      "test": "large-offset 2D dense order=2 DE=4",
+      "status": "PASS",
+      "detail": {
+        "min_self_distance_m": 1.8407497748285095e-13,
+        "residual": 2.96147817428545e-11,
+        "operator_max_difference": 0.0
+      },
+      "source_report": "issue1_regression.json"
+    },
+    {
+      "test": "large-offset 2D fmm order=2 DE=3",
+      "status": "PASS",
+      "detail": {
+        "min_self_distance_m": 4.596323321948148e-14,
+        "residual": 4.422481705569828e-11,
+        "operator_max_difference": 0.0
+      },
+      "source_report": "issue1_regression.json"
+    },
+    {
+      "test": "world coordinates retained in JSON/CSV/NPZ/VTK and CSV import",
+      "status": "PASS",
+      "detail": {
+        "vertex_count": 192
+      },
+      "source_report": "issue1_regression.json"
+    },
+    {
+      "test": "translated 2D_JOIN order=2",
+      "status": "PASS",
+      "detail": {
+        "residual": 4.8584425733930064e-11
+      },
+      "source_report": "issue1_regression.json"
+    },
+    {
+      "test": "translated 3D_BOX order=0",
+      "status": "PASS",
+      "detail": {
+        "residual": 2.3070361697738794e-12
+      },
+      "source_report": "issue1_regression.json"
+    },
+    {
+      "test": "translated 3D_BOX order=2",
+      "status": "PASS",
+      "detail": {
+        "residual": 5.319272129468531e-11
+      },
+      "source_report": "issue1_regression.json"
+    },
+    {
+      "test": "translated 3D_JOIN order=0",
+      "status": "PASS",
+      "detail": {
+        "residual": 9.445140701486622e-11
+      },
+      "source_report": "issue1_regression.json"
+    },
+    {
+      "test": "clockwise topology still rejected",
+      "status": "PASS",
+      "detail": {
+        "message": "block: 反時計回りの非退化な閉輪郭が必要です。"
+      },
+      "source_report": "issue1_regression.json"
+    },
+    {
+      "test": "zero-size geometry still rejected",
+      "status": "PASS",
+      "detail": {},
+      "source_report": "issue1_regression.json"
+    },
+    {
+      "test": "large polygon counterclockwise input",
+      "status": "PASS",
+      "detail": {},
+      "source_report": "issue1_regression.json"
+    },
+    {
+      "test": "large polygon clockwise input normalized",
+      "status": "PASS",
+      "detail": {},
+      "source_report": "issue1_regression.json"
+    },
+    {
+      "test": "thin nondegenerate large-offset polygon accepted",
+      "status": "PASS",
+      "detail": {
+        "height_m": 9.5367431640625e-07
+      },
+      "source_report": "issue1_regression.json"
+    },
+    {
       "test": "final FMM workbook native sheets, buttons and selectors",
       "status": "PASS",
       "detail": {
@@ -899,7 +1027,7 @@
       "test": "final embedded VBA sources including FMM match delivered sources",
       "status": "PASS",
       "detail": {
-        "source_count": 29,
+        "source_count": 30,
         "temporary_QA_modules": 0,
         "Python_execution": false
       }
@@ -909,10 +1037,10 @@
       "status": "PASS",
       "detail": {
         "DOF": 384,
-        "ux_m": 0.0015166665176119438,
-        "uy_m": -0.0006500002086718824,
-        "sxx_kPa": 99.99999611979898,
-        "szz_kPa": 29.9999958987081
+        "ux_m": 0.0015166665176119462,
+        "uy_m": -0.0006500002086718826,
+        "sxx_kPa": 99.99999611979896,
+        "szz_kPa": 29.99999589870809
       }
     },
     {
@@ -920,7 +1048,7 @@
       "status": "PASS",
       "detail": {
         "DOF": 384,
-        "true_relative_residual": 5.58056954154583e-10,
+        "true_relative_residual": 5.580569042142385e-10,
         "far_pairs": 60,
         "formats": "JSON, CSV, VTK, NPZ"
       }

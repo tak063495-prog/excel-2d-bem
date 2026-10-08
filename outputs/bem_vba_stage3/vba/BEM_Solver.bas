@@ -14,32 +14,33 @@ Private SystemLU() As Double, Permutation() As Long, RowScale() As Double, RHS()
 Private Sub InitializeRegion(ByVal sr As CSolveRegion, ByVal r As CBemRegion)
     Dim e As Long, i As Long, j As Long, a As Double, b As Double, geom As CElementData, rule As CIntegrationRule
     Dim p As Variant, n As Variant, jac As Double, lower As Variant, upper As Variant, point As Variant
+    Dim localPoint(1 To 3) As Double, normal(1 To 3) As Double, ds(1 To 3) As Double, dt(1 To 3) As Double
     Dim stage As String, message As String, number As Long
     On Error GoTo Failed
     stage = "材料・配列"
-    Set sr.Ref = r: sr.NF = r.elements.count * r.FieldCount: sr.ND = sr.NF * r.Dimension
+    Set sr.Ref = r: sr.FrameOrigin = r.Origin: sr.NF = r.elements.count * r.FieldCount: sr.ND = sr.NF * r.dimension
     sr.Mu = r.Young / (2 * (1 + r.Poisson)): sr.NuEff = r.Poisson
-    If r.Dimension = 2 And TextAt(WS("操作"), 6, 2) = "plane_stress" Then sr.NuEff = r.Poisson / (1 + r.Poisson)
-    sr.IsPlaneStrain = r.Dimension = 2 And TextAt(WS("操作"), 6, 2) = "plane_strain"
+    If r.dimension = 2 And TextAt(WS("操作"), 6, 2) = "plane_stress" Then sr.NuEff = r.Poisson / (1 + r.Poisson)
+    sr.IsPlaneStrain = r.dimension = 2 And TextAt(WS("操作"), 6, 2) = "plane_strain"
     sr.Lambda = 2 * sr.Mu * sr.NuEff / (1 - 2 * sr.NuEff)
     lower = r.vertices(1): upper = lower
     For Each point In r.vertices
-        For j = 0 To r.Dimension - 1: lower(j) = MinDouble(lower(j), point(j)): upper(j) = MaxDouble(upper(j), point(j)): Next j
+        For j = 0 To r.dimension - 1: lower(j) = MinDouble(lower(j), point(j)): upper(j) = MaxDouble(upper(j), point(j)): Next j
     Next point
-    For j = 0 To r.Dimension - 1: sr.MeshScale = MaxDouble(sr.MeshScale, upper(j) - lower(j)): Next j
+    For j = 0 To r.dimension - 1: sr.MeshScale = MaxDouble(sr.MeshScale, upper(j) - lower(j)): Next j
     sr.AllocateFields
-    Set sr.Geometries = New Collection: Set rule = RegularRule(r.Dimension, BoundaryOrder)
+    Set sr.Geometries = New Collection: Set rule = RegularRule(r.dimension, BoundaryOrder)
     For e = 0 To r.elements.count - 1
         stage = "要素幾何 " & e
-        Set geom = New CElementData: geom.Initialize r, e
+        Set geom = New CElementData: geom.Initialize r, e, sr.FrameOrigin
         stage = "積分点準備 " & e
         Set geom.Regular = New CElementRule: geom.Regular.Initialize geom, rule: sr.Geometries.Add geom
         stage = "場節点 " & e
         For i = 1 To r.FieldCount
-            p = r.CollocationPoint(e, i - 1): FieldParameters r.Dimension, r.ElementOrder, i, a, b
-            n = r.Differential(e, a, b, jac)
-            For j = 1 To r.Dimension
-                sr.SetField e * r.FieldCount + i, j, p(j - 1), n(j - 1)
+            FieldParameters r.dimension, r.ElementOrder, i, a, b
+            MapGeometry geom, a, b, localPoint, normal, jac, ds, dt
+            For j = 1 To r.dimension
+                sr.SetField e * r.FieldCount + i, j, localPoint(j), normal(j)
             Next j
         Next i
     Next e
@@ -56,8 +57,8 @@ Private Sub MeasureInterfaces()
         Set sr = SolveData(name)
         For i = 1 To sr.NF
             If sr.paired(i) Then
-                For j = 1 To sr.Ref.Dimension
-                    index = (i - 1) * sr.Ref.Dimension + j: column = sr.umap(index)
+                For j = 1 To sr.Ref.dimension
+                    index = (i - 1) * sr.Ref.dimension + j: column = sr.umap(index)
                     If first.Exists(CStr(column)) Then
                         prior = first(CStr(column))
                         InterfaceJump = MaxDouble(InterfaceJump, Abs(sr.u(index) - prior(0)))
@@ -85,7 +86,7 @@ Private Sub SetUnknownMaps()
                 ia = CLng(e) * a.Ref.FieldCount + l: nearest = 1E+250: best = 0
                 For j = 1 To b.Ref.FieldCount
                     ib = f * b.Ref.FieldCount + j: distance = 0
-                    For i = 1 To d: distance = distance + (a.x(ia, i) - b.x(ib, i)) ^ 2: Next i
+                    For i = 1 To d: distance = distance + ((a.FrameOrigin(i - 1) - b.FrameOrigin(i - 1)) + a.x(ia, i) - b.x(ib, i)) ^ 2: Next i
                     If distance < nearest Then nearest = distance: best = ib
                 Next j
                 If Sqr(nearest) > MaxDouble(a.MeshScale, b.MeshScale) * 0.000000001 Then Fail "接合面の場節点が一致しません。"
@@ -123,7 +124,7 @@ Private Sub IntegrateBlock(ByVal sr As CSolveRegion, ByVal target As Long, ByVal
     Dim ng As Double, nt As Double, wg(1 To 6) As Double, wt(1 To 6) As Double
     Dim positions() As Double, directions() As Double, weights() As Double, shapes() As Double
     positions = prepared.xyz: directions = prepared.Normals: weights = prepared.weight: shapes = prepared.n
-    d = sr.Ref.Dimension: k = sr.Ref.FieldCount: ownLocal = (target - 1) Mod k + 1
+    d = sr.Ref.dimension: k = sr.Ref.FieldCount: ownLocal = (target - 1) Mod k + 1
     For a = 1 To d: x(a) = sr.x(target, a): Next a
     For q = 1 To prepared.count
         For a = 1 To d: y(a) = positions(q, a): normal(a) = directions(q, a): Next a
@@ -149,7 +150,7 @@ Public Sub AssembleRegion(ByVal sr As CSolveRegion)
     Dim geom As CElementData, rule As CIntegrationRule, prepared As CElementRule, own As Boolean, useRegular As Boolean
     Dim x(1 To 3) As Double, s As Double, t As Double, distance As Double, correction As Double
     Dim gm() As Double, hm() As Double
-    d = sr.Ref.Dimension: k = sr.Ref.FieldCount
+    d = sr.Ref.dimension: k = sr.Ref.FieldCount
     ReDim gm(1 To sr.ND, 1 To sr.ND): ReDim hm(1 To sr.ND, 1 To sr.ND)
     For i = 1 To sr.NF
         For a = 1 To d: x(a) = sr.x(i, a): Next a
@@ -295,7 +296,7 @@ Private Function TrueResidual(ByRef residual() As Double) As Double
             If sr.backend = "dense" Then
                 For j = 1 To sr.ND: magnitude = magnitude + Abs(hm(i, j) * u(j)) + Abs(gm(i, j) * t(j)): Next j
             Else
-                d = sr.Ref.Dimension: field = (i - 1) \ d + 1: a = (i - 1) Mod d + 1
+                d = sr.Ref.dimension: field = (i - 1) \ d + 1: a = (i - 1) Mod d + 1
                 For b = 1 To d: magnitude = magnitude + sr.NF * (Abs(dh(field, a, b)) * umax + Abs(dg(field, a, b)) * tmax): Next b
             End If
             termScale = termScale + magnitude * magnitude
@@ -315,7 +316,7 @@ Public Sub SolveBoundary()
     Call ReadFmmOptions
     total = 0
     For Each name In Models.keys
-        Set r = Models(name): total = total + r.elements.count * r.FieldCount * r.Dimension
+        Set r = Models(name): total = total + r.elements.count * r.FieldCount * r.dimension
     Next name
     If total > MaxFmmUnknowns Then Fail "未知数 " & total & " がモデル上限 " & MaxFmmUnknowns & " を超えます。分割を減らすか上限を変更してください。"
     If LinearMethod = "lu" And total > MaxUnknowns Then Fail "LUの未知数 " & total & " が密行列上限 " & MaxUnknowns & " を超えます。gmres / fmmを選択してください。"
@@ -410,10 +411,10 @@ Public Function BoundaryResultRows() As Collection
     Dim rows As Collection, name As Variant, sr As CSolveRegion, i As Long, j As Long, d As Long, k As Long, row As Variant
     Set rows = New Collection
     For Each name In SolveData.keys
-        Set sr = SolveData(name): d = sr.Ref.Dimension: k = sr.Ref.FieldCount
+        Set sr = SolveData(name): d = sr.Ref.dimension: k = sr.Ref.FieldCount
         For i = 1 To sr.NF
-            row = Array(CStr(name), i, (i - 1) \ k + 1, (i - 1) Mod k + 1, sr.x(i, 1), sr.x(i, 2), Empty, Empty, Empty, Empty, Empty, Empty, Empty)
-            If d = 3 Then row(6) = sr.x(i, 3)
+            row = Array(CStr(name), i, (i - 1) \ k + 1, (i - 1) Mod k + 1, sr.WorldCoordinate(i, 1), sr.WorldCoordinate(i, 2), Empty, Empty, Empty, Empty, Empty, Empty, Empty)
+            If d = 3 Then row(6) = sr.WorldCoordinate(i, 3)
             For j = 1 To d: row(6 + j) = sr.u((i - 1) * d + j): row(9 + j) = sr.t((i - 1) * d + j): Next j
             rows.Add row
         Next i

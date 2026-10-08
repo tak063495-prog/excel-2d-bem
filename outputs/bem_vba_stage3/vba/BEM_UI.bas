@@ -161,17 +161,17 @@ Private Sub WriteMeshTables()
         Set r = Models(name)
         For i = 1 To r.vertices.count
             p = r.vertices(i): row = Array(r.RegionName, i, p(0), p(1), Empty)
-            If r.Dimension = 3 Then row(4) = p(2)
+            If r.dimension = 3 Then row(4) = p(2)
             nodes.Add row
         Next i
         For Each boundary In r.groups.keys
             For Each e In r.groups(boundary)
                 ids = r.elements(CLng(e) + 1)
-                p = r.position(CLng(e), IIf(r.Dimension = 2, 0, 1 / 3), 1 / 3)
-                n = r.Differential(CLng(e), IIf(r.Dimension = 2, 0, 1 / 3), 1 / 3, jac)
+                p = r.position(CLng(e), IIf(r.dimension = 2, 0, 1 / 3), 1 / 3)
+                n = r.Differential(CLng(e), IIf(r.dimension = 2, 0, 1 / 3), 1 / 3, jac)
                 row = Array(r.RegionName, CLng(e) + 1, boundary, r.ElementOrder, Empty, Empty, Empty, Empty, Empty, Empty, p(0), p(1), Empty, n(0), n(1), Empty, ElementMeasure(r, CLng(e)), MaxEdge(r, CLng(e)))
                 For j = 0 To UBound(ids): row(4 + j) = ids(j) + 1: Next j
-                If r.Dimension = 3 Then row(12) = p(2): row(15) = n(2)
+                If r.dimension = 3 Then row(12) = p(2): row(15) = n(2)
                 elements.Add row
             Next e
         Next boundary
@@ -205,7 +205,7 @@ Public Sub DrawPreview()
     chart.ChartType = xlXYScatterLinesNoMarkers: chart.HasTitle = True
     chart.ChartTitle.text = IIf(CurrentDimension() = 2, "2D境界メッシュ（XY）", "3D境界メッシュ（等角投影）")
     chart.HasLegend = True: chart.Legend.position = xlLegendPositionBottom
-    chart.ChartArea.Font.name = "Yu Gothic": chart.ChartArea.Font.size = 10
+    chart.ChartArea.Font.name = "Yu Gothic": chart.ChartArea.Font.Size = 10
     chart.ChartArea.Format.Line.Visible = msoFalse: chart.DisplayBlanksAs = xlNotPlotted
     total = CLng(WS("操作").Range("B19").Value2)
     stride = MaxLong(1, Ceiling(total / 3000#)): start = 1: i = 0
@@ -218,12 +218,12 @@ Public Sub DrawPreview()
                 count = count + 1
                 If (count - 1) Mod stride = 0 Then
                     ids = r.elements(CLng(e) + 1)
-                    If r.Dimension = 2 Then
+                    If r.dimension = 2 Then
                         curveSteps = IIf(r.ElementOrder = 2, 6, 1)
                         For stepNo = 0 To curveSteps - 1
                             p = r.position(CLng(e), -1 + 2 * stepNo / curveSteps)
                             q = r.position(CLng(e), -1 + 2 * (stepNo + 1) / curveSteps)
-                            AppendPlotLine lines, ProjectPoint(p, r.Dimension), ProjectPoint(q, r.Dimension), minx, maxx, miny, maxy, hasBounds
+                            AppendPlotLine lines, ProjectPoint(p, r.dimension), ProjectPoint(q, r.dimension), minx, maxx, miny, maxy, hasBounds
                         Next stepNo
                     Else
                         For j = 0 To 2
@@ -258,7 +258,7 @@ Public Sub DrawPreview()
                 start = start + nrows: i = i + 1
             End If
         Next boundary
-        If r.Dimension = 2 Then
+        If r.dimension = 2 Then
             Set lines = New Collection
             For j = 1 To r.vertices.count
                 p = r.vertices(j): lines.Add Array(p(0), p(1))

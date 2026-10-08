@@ -18,10 +18,7 @@ Public Function JQuote(ByVal value As String) As String
     JQuote = """" & result & """"
 End Function
 Public Function JNum(ByVal value As Double) As String
-    'Str uses a period independently of Excel's decimal separator.
-    JNum = Trim$(Str$(value))
-    If Left$(JNum, 1) = "." Then JNum = "0" & JNum
-    If Left$(JNum, 2) = "-." Then JNum = "-0" & Mid$(JNum, 2)
+    JNum = RoundTripNumber(value)
 End Function
 Public Function JoinCollection(ByVal parts As Collection, ByVal separator As String) As String
     Dim values() As String, i As Long

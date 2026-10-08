@@ -79,9 +79,12 @@ Public Function FieldCount() As Long
 End Function
 
 Public Function Position(ByVal e As Long, ByVal a As Double, Optional ByVal b As Double = 0) As Variant
-    Dim ids As Variant, n As Variant, p As Variant, q As Variant
+    Position = Add3(Origin, LocalPosition(e, a, b))
+End Function
+Public Function LocalPosition(ByVal e As Long, ByVal a As Double, Optional ByVal b As Double = 0) As Variant
+    Dim ids As Variant, n As Variant, p As Variant, q As Variant, base As Variant
     Dim c As Double, i As Long, j As Long
-    ids = Elements(e + 1): p = Array(0#, 0#, 0#)
+    ids = Elements(e + 1): base = Vertices(ids(0) + 1): p = Sub3(base, Origin)
     If Dimension = 2 Then
         If ElementOrder = 0 Then
             n = Array((1 - a) / 2, (1 + a) / 2)
@@ -97,10 +100,10 @@ Public Function Position(ByVal e As Long, ByVal a As Double, Optional ByVal b As
         End If
     End If
     For i = 0 To UBound(ids)
-        q = Vertices(ids(i) + 1)
+        q = Sub3(Vertices(ids(i) + 1), base)
         For j = 0 To 2: p(j) = p(j) + n(i) * q(j): Next j
     Next i
-    Position = p
+    LocalPosition = p
 End Function
 
 Public Function CollocationPoint(ByVal e As Long, ByVal fieldIndex As Long) As Variant
@@ -120,8 +123,8 @@ End Function
 
 Public Function Differential(ByVal e As Long, ByVal a As Double, ByVal b As Double, ByRef jac As Double) As Variant
     Dim ids As Variant, da As Variant, db As Variant, u As Variant, v As Variant
-    Dim p As Variant, w As Variant, c As Double, i As Long, j As Long
-    ids = Elements(e + 1): u = Array(0#, 0#, 0#): v = Array(0#, 0#, 0#)
+    Dim p As Variant, w As Variant, base As Variant, c As Double, i As Long, j As Long
+    ids = Elements(e + 1): base = Vertices(ids(0) + 1): u = Array(0#, 0#, 0#): v = Array(0#, 0#, 0#)
     If Dimension = 2 Then
         If ElementOrder = 0 Then da = Array(-0.5, 0.5) Else da = Array(a - 0.5, -2 * a, a + 0.5)
     Else
@@ -134,7 +137,7 @@ Public Function Differential(ByVal e As Long, ByVal a As Double, ByVal b As Doub
         End If
     End If
     For i = 0 To UBound(ids)
-        p = Vertices(ids(i) + 1)
+        p = Sub3(Vertices(ids(i) + 1), base)
         For j = 0 To 2
             u(j) = u(j) + da(i) * p(j)
             If Dimension = 3 Then v(j) = v(j) + db(i) * p(j)

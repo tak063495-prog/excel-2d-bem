@@ -154,7 +154,7 @@ def main():
         app.EnableEvents = False
         if book is not None: book.Close(False)
         app.Quit()
-    result = dict(verified_on='2026-10-08', all_passed=True, test_count=len(tests), tests=tests)
+    result = dict(verified_on=time.strftime('%Y-%m-%d'), all_passed=True, test_count=len(tests), tests=tests)
     (OUT/'再確認検証結果.json').write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding='utf-8')
     print('ALL PASSED', len(tests), flush=True)
 

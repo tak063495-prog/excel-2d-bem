@@ -17,14 +17,15 @@ Public Length As Double
 Public ModelScale As Double
 Public Planar As Boolean
 Public Regular As CElementRule
-Public Sub Initialize(ByVal r As CBemRegion, ByVal e As Long)
+Public Sub Initialize(ByVal r As CBemRegion, ByVal e As Long, Optional ByVal origin As Variant)
     Dim ids As Variant, p As Variant, i As Long, j As Long, edge As Long, length2 As Double, difference As Double
     ReDim Coords(1 To 6, 1 To 3) As Double
+    If IsMissing(origin) Then origin = Array(0#, 0#, 0#)
     D = r.dimension: ElementOrder = r.ElementOrder: K = r.FieldCount: ModelScale = r.ModelScale
     ids = r.Elements(e + 1): NG = UBound(ids) + 1
     For i = 1 To NG
         p = r.Vertices(ids(i - 1) + 1)
-        For j = 1 To D: Coords(i, j) = p(j - 1): Next j
+        For j = 1 To D: Coords(i, j) = p(j - 1) - origin(j - 1): Next j
     Next i
     Length = MaxEdge(r, e): Planar = True
     If ElementOrder = 2 Then

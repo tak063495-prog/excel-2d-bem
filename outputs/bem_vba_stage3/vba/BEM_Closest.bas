@@ -62,14 +62,14 @@ Public Sub ClosestPoint(ByVal geom As CElementData, ByRef x() As Double, ByRef b
     Dim i As Long, edge As Long, side As Long, j As Long, seed As Long, iteration As Long, stepIndex As Long
     Dim g00 As Double, g01 As Double, g11 As Double, z0 As Double, z1 As Double, det As Double, a As Double, b As Double, jac As Double
     Dim s As Double, dist As Double, best As Double, trial As Double, stepA As Double, stepB As Double, newA As Double, newB As Double, factor As Double
-    For i = 1 To geom.d: startP(i) = geom.Coords(1, i): endP(i) = geom.Coords(geom.NG, i): midP(i) = geom.Coords(2, i): Next i
+    For i = 1 To geom.d: startP(i) = geom.coords(1, i): endP(i) = geom.coords(geom.ng, i): midP(i) = geom.coords(2, i): Next i
     If geom.d = 2 Then
         ClosestLine startP, midP, endP, x, geom.ElementOrder = 2, bestA, distance: bestB = 0: Exit Sub
     End If
     For i = 1 To 3
-        ds(i) = geom.Coords(2, i) - geom.Coords(1, i): dt(i) = geom.Coords(3, i) - geom.Coords(1, i)
+        ds(i) = geom.coords(2, i) - geom.coords(1, i): dt(i) = geom.coords(3, i) - geom.coords(1, i)
         g00 = g00 + ds(i) * ds(i): g01 = g01 + ds(i) * dt(i): g11 = g11 + dt(i) * dt(i)
-        z0 = z0 + ds(i) * (x(i) - geom.Coords(1, i)): z1 = z1 + dt(i) * (x(i) - geom.Coords(1, i))
+        z0 = z0 + ds(i) * (x(i) - geom.coords(1, i)): z1 = z1 + dt(i) * (x(i) - geom.coords(1, i))
     Next i
     det = g00 * g11 - g01 * g01: a = (g11 * z0 - g01 * z1) / det: b = (g00 * z1 - g01 * z0) / det
     best = 1E+250
@@ -77,8 +77,8 @@ Public Sub ClosestPoint(ByVal geom As CElementData, ByRef x() As Double, ByRef b
     For side = 1 To 3
         edge = side Mod 3 + 1
         For i = 1 To 3
-            startP(i) = geom.Coords(side, i): endP(i) = geom.Coords(edge, i)
-            If geom.ElementOrder = 2 Then midP(i) = geom.Coords(side + 3, i)
+            startP(i) = geom.coords(side, i): endP(i) = geom.coords(edge, i)
+            If geom.ElementOrder = 2 Then midP(i) = geom.coords(side + 3, i)
         Next i
         ClosestLine startP, midP, endP, x, geom.ElementOrder = 2, s, dist
         If dist * dist < best Then

@@ -18,10 +18,7 @@ Public Function JQuote(ByVal value As String) As String
     JQuote = """" & result & """"
 End Function
 Public Function JNum(ByVal value As Double) As String
-    'Str uses a period independently of Excel's decimal separator.
-    JNum = Trim$(Str$(value))
-    If left$(JNum, 1) = "." Then JNum = "0" & JNum
-    If left$(JNum, 2) = "-." Then JNum = "-0" & mid$(JNum, 2)
+    JNum = RoundTripNumber(value)
 End Function
 Public Function JoinCollection(ByVal parts As Collection, ByVal separator As String) As String
     Dim values() As String, i As Long
@@ -53,7 +50,7 @@ Public Function ModelJSON() As String
     Set allRegions = New Collection
     For Each name In Models.keys
         Set r = Models(name): Set coords = New Collection: Set elems = New Collection: Set rules = New Collection
-        For Each p In r.Vertices: coords.Add VectorJSON(p, r.Dimension): Next p
+        For Each p In r.Vertices: coords.Add VectorJSON(p, r.dimension): Next p
         For Each ids In r.elements
             Set list = New Collection
             For i = 0 To UBound(ids): list.Add CStr(CLng(ids(i))): Next i
@@ -62,11 +59,11 @@ Public Function ModelJSON() As String
         For Each boundary In r.groups.keys
             If Not r.InterfaceGroups.Exists(boundary) Then
                 rule = r.RuleFor(CStr(boundary))
-                rules.Add "{""elements"":" & IndexJSON(r.groups(boundary)) & ",""type"":" & VectorJSON(rule(0), r.Dimension, True) & ",""values"":" & VectorJSON(rule(1), r.Dimension) & "}"
+                rules.Add "{""elements"":" & IndexJSON(r.groups(boundary)) & ",""type"":" & VectorJSON(rule(0), r.dimension, True) & ",""values"":" & VectorJSON(rule(1), r.dimension) & "}"
             End If
         Next boundary
         Set list = New Collection
-        For Each p In r.points: list.Add VectorJSON(p, r.Dimension): Next p
+        For Each p In r.points: list.Add VectorJSON(p, r.dimension): Next p
         content = "{""name"":" & JQuote(r.RegionName) & ",""vertices"": [" & JoinCollection(coords, ",") & "],""elements"": [" & JoinCollection(elems, ",") & "]"
         content = content & ",""material"":{""E"":" & JNum(r.Young) & ",""nu"":" & JNum(r.Poisson) & "},""element_order"":" & r.ElementOrder
         content = content & ",""boundary_conditions"": [" & JoinCollection(rules, ",") & "],""interior_points"": [" & JoinCollection(list, ",") & "]}"
@@ -208,7 +205,7 @@ Private Function CSVNumber(ByVal text As String, ByVal context As String) As Dou
 End Function
 Private Sub CoordinatesMatch(ByVal values As Variant, ByVal expected As Variant, ByVal r As CBemRegion, ByVal context As String)
     Dim j As Long
-    For j = 0 To r.Dimension - 1
+    For j = 0 To r.dimension - 1
         If Abs(CSVNumber(values(j), context) - expected(j)) > r.ModelScale * 0.000000001 Then Fail context & ": À•W‚ªŒ»İ‚Ìƒ‚ƒfƒ‹‚Æˆê’v‚µ‚Ü‚¹‚ñB"
     Next j
 End Sub

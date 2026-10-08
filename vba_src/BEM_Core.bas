@@ -230,13 +230,13 @@ Public Function MinDouble(ByVal a As Double, ByVal b As Double) As Double
 End Function
 
 Public Function PolygonArea(ByVal points As Variant) As Double
-    Dim i As Long, a As Variant, b As Variant, base As Variant
+    Dim i As Long, a As Variant, b As Variant, base As Variant, total As Double, compensation As Double
     base = points(0)
     For i = 0 To UBound(points)
         a = Sub3(points(i), base): b = Sub3(points((i + 1) Mod (UBound(points) + 1)), base)
-        PolygonArea = PolygonArea + a(0) * b(1) - a(1) * b(0)
+        CompensatedAdd total, compensation, a(0) * b(1) - a(1) * b(0)
     Next i
-    PolygonArea = PolygonArea / 2
+    PolygonArea = total / 2
 End Function
 Public Function ReadPolygon(ByVal r As CBemRegion) As Variant
     Dim s As Worksheet, items As Object, row As Long, id As String, seq As Double, i As Long, j As Long

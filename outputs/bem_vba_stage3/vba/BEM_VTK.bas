@@ -3,7 +3,7 @@ Option Explicit
 Public Function ResultantJSON(ByVal sr As CSolveRegion) As String
     Dim rule As CIntegrationRule, geom As CElementData, prepared As CElementRule, weights() As Double, shape() As Double, t() As Double
     Dim force(1 To 3) As Double, e As Long, i As Long, j As Long, l As Long, d As Long, value As Double, parts As Collection
-    d = sr.Ref.Dimension: t = sr.t: Set rule = RegularRule(d, IIf(d = 2, 32, 16))
+    d = sr.Ref.dimension: t = sr.t: Set rule = RegularRule(d, IIf(d = 2, 32, 16))
     For e = 0 To sr.Ref.elements.count - 1
         Set geom = sr.Geometries(e + 1): Set prepared = New CElementRule: prepared.Initialize geom, rule: weights = prepared.weight: shape = prepared.n
         For i = 1 To prepared.count: For j = 1 To d
@@ -20,7 +20,7 @@ Public Sub SaveBoundaryVTK(ByVal sr As CSolveRegion, ByVal folder As String)
     Dim shape(1 To 6) As Double, u() As Double, t() As Double, values() As Double, data(1 To 3) As Double
     Dim e As Long, i As Long, j As Long, l As Long, ng As Long, d As Long, cellType As Long, position As Long, axis As Long, kind As Long, permutation As Variant
     Dim fso As Object, a As Double, b As Double, vectorTitle As String
-    Set r = sr.Ref: d = r.Dimension: ids = r.elements(1): ng = UBound(ids) + 1: u = sr.u: t = sr.t: Set lines = New Collection
+    Set r = sr.Ref: d = r.dimension: ids = r.elements(1): ng = UBound(ids) + 1: u = sr.u: t = sr.t: Set lines = New Collection
     lines.Add "# vtk DataFile Version 3.0": lines.Add "Unified elasticity boundary, discontinuous fields": lines.Add "ASCII": lines.Add "DATASET UNSTRUCTURED_GRID"
     lines.Add "POINTS " & r.elements.count * ng & " double"
     For Each ids In r.elements

@@ -74,7 +74,7 @@ Public Sub SaveSolutionNPZ(ByVal folder As String)
         AddEntry entries, prefix & "elements", buffer
         xyz = sr.X: u = sr.U: t = sr.T
         Set buffer = NPYBuffer("<f8", "(" & sr.NF & ", " & d & ")")
-        For i = 1 To sr.NF: For j = 1 To d: buffer.AppendDouble xyz(i, j): Next j: Next i
+        For i = 1 To sr.NF: For j = 1 To d: buffer.AppendDouble sr.WorldCoordinate(i, j): Next j: Next i
         AddEntry entries, prefix & "collocation", buffer
         Set buffer = NPYBuffer("<f8", "(" & sr.NF & ", " & d & ")")
         For i = 1 To sr.ND: buffer.AppendDouble u(i): Next i

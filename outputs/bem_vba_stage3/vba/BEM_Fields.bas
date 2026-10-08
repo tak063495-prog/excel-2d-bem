@@ -14,7 +14,7 @@ Private Function EvaluateElement(ByVal sr As CSolveRegion, ByVal e As Long, ByRe
     Dim grad(1 To 3, 1 To 3) As Double, f(1 To 12) As Double, compensation(1 To 12) As Double
     Dim trace As Double, value As Double, weighted As Double, adjusted As Double, total As Double
     Dim positions() As Double, directions() As Double, weights() As Double, shapes() As Double, boundaryU() As Double, boundaryT() As Double
-    d = sr.Ref.Dimension: k = sr.Ref.FieldCount: ns = d * d: If d = 2 Then ns = ns + 1
+    d = sr.Ref.dimension: k = sr.Ref.FieldCount: ns = d * d: If d = 2 Then ns = ns + 1
     nvalues = d + ns: Set geom = sr.Geometries(e + 1): order = InteriorOrder(d, level)
     If family = "gauss" Then upper = CDbl(order) ^ (d - 1) Else upper = IIf(d = 2, 2# * (16 * 2 ^ level + 1), 3# * (16 * 2 ^ level + 1) * 12 * 2 ^ MinLong(level, 4))
     If count + upper > MaxPointBudget Then Exit Function
@@ -70,12 +70,12 @@ Private Function EvaluatePoint(ByVal sr As CSolveRegion, ByVal pointIndex As Lon
     Dim values() As Double, floor() As Double, previous() As Double, lastValue() As Double, estimates() As Double, accumulated() As Double, errors() As Double
     Dim good As Boolean, hasValue As Boolean, hasPrevious As Boolean, hasEstimate As Boolean, passed As Long, available As Boolean, allGood As Boolean, nvalues As Long, stress(1 To 3, 1 To 3) As Double
     Dim uError As Double, stressError As Double, elementError As Double, errorCode As String, reason As String, details As Collection, estimated As Collection, elementsDE As Long, switched As Boolean
-    d = sr.Ref.Dimension: k = sr.Ref.FieldCount: point = sr.Ref.points(pointIndex): nvalues = d + d * d + IIf(d = 2, 1, 0)
-    For i = 1 To d: x(i) = point(i - 1): Next i
+    d = sr.Ref.dimension: k = sr.Ref.FieldCount: point = sr.Ref.points(pointIndex): nvalues = d + d * d + IIf(d = 2, 1, 0)
+    For i = 1 To d: x(i) = point(i - 1) - sr.FrameOrigin(i - 1): Next i
     ReDim s(0 To sr.Ref.elements.count - 1): ReDim t(0 To sr.Ref.elements.count - 1): ReDim distances(0 To sr.Ref.elements.count - 1)
     ReDim accumulated(1 To nvalues): ReDim errors(1 To nvalues): nearestDistance = 1E+250
-    row = Array(sr.Ref.RegionName, sr.Ref.PointIds(pointIndex), x(1), x(2), Empty, Empty, Empty, Empty, Empty, Empty, Empty, Empty, Empty, Empty, False, "INVALID_INTERIOR_POINT", False)
-    If d = 3 Then row(4) = x(3)
+    row = Array(sr.Ref.RegionName, sr.Ref.PointIds(pointIndex), point(0), point(1), Empty, Empty, Empty, Empty, Empty, Empty, Empty, Empty, Empty, Empty, False, "INVALID_INTERIOR_POINT", False)
+    If d = 3 Then row(4) = point(2)
     For e = 0 To sr.Ref.elements.count - 1
         Set geom = sr.Geometries(e + 1): ClosestPoint geom, x, s(e), t(e), distances(e)
         If distances(e) / geom.length <= InteriorMinDistanceRatio Then

@@ -1,0 +1,119 @@
+{
+  "verified_on": "2026-10-09",
+  "all_passed": true,
+  "test_count": 16,
+  "tests": [
+    {
+      "test": "standalone solver region initializes coordinate frame (runtime error 13)",
+      "status": "PASS",
+      "detail": {}
+    },
+    {
+      "test": "double text round-trip and decimal-comma locale",
+      "status": "PASS",
+      "detail": {
+        "numbers": 3009
+      }
+    },
+    {
+      "test": "large-offset 2D dense order=0 DE=0",
+      "status": "PASS",
+      "detail": {
+        "min_self_distance_m": 6.952709380447786e-10,
+        "residual": 1.790422607185262e-11,
+        "operator_max_difference": 0.0
+      }
+    },
+    {
+      "test": "large-offset 2D dense order=2 DE=3",
+      "status": "PASS",
+      "detail": {
+        "min_self_distance_m": 1.8407497748285095e-13,
+        "residual": 2.961471722170062e-11,
+        "operator_max_difference": 0.0
+      }
+    },
+    {
+      "test": "large-offset 2D dense order=2 DE=4",
+      "status": "PASS",
+      "detail": {
+        "min_self_distance_m": 1.8407497748285095e-13,
+        "residual": 2.96147817428545e-11,
+        "operator_max_difference": 0.0
+      }
+    },
+    {
+      "test": "large-offset 2D fmm order=2 DE=3",
+      "status": "PASS",
+      "detail": {
+        "min_self_distance_m": 4.596323321948148e-14,
+        "residual": 4.422481705569828e-11,
+        "operator_max_difference": 0.0
+      }
+    },
+    {
+      "test": "world coordinates retained in JSON/CSV/NPZ/VTK and CSV import",
+      "status": "PASS",
+      "detail": {
+        "vertex_count": 192
+      }
+    },
+    {
+      "test": "translated 2D_JOIN order=2",
+      "status": "PASS",
+      "detail": {
+        "residual": 4.8584425733930064e-11
+      }
+    },
+    {
+      "test": "translated 3D_BOX order=0",
+      "status": "PASS",
+      "detail": {
+        "residual": 2.3070361697738794e-12
+      }
+    },
+    {
+      "test": "translated 3D_BOX order=2",
+      "status": "PASS",
+      "detail": {
+        "residual": 5.319272129468531e-11
+      }
+    },
+    {
+      "test": "translated 3D_JOIN order=0",
+      "status": "PASS",
+      "detail": {
+        "residual": 9.445140701486622e-11
+      }
+    },
+    {
+      "test": "clockwise topology still rejected",
+      "status": "PASS",
+      "detail": {
+        "message": "block: 反時計回りの非退化な閉輪郭が必要です。"
+      }
+    },
+    {
+      "test": "zero-size geometry still rejected",
+      "status": "PASS",
+      "detail": {}
+    },
+    {
+      "test": "large polygon counterclockwise input",
+      "status": "PASS",
+      "detail": {}
+    },
+    {
+      "test": "large polygon clockwise input normalized",
+      "status": "PASS",
+      "detail": {}
+    },
+    {
+      "test": "thin nondegenerate large-offset polygon accepted",
+      "status": "PASS",
+      "detail": {
+        "height_m": 9.5367431640625e-07
+      }
+    }
+  ]
+}

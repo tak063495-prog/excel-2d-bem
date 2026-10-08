@@ -54,7 +54,7 @@ End Sub
 
 Public Sub KelvinTensor(ByVal sr As CSolveRegion, ByRef x() As Double, ByRef y() As Double, ByRef uk() As Double, ByRef tensor() As Double)
     Dim d As Long, i As Long, j As Long, k As Long, h(1 To 3) As Double, rho As Double, nu As Double, cu As Double, ct As Double, identity As Double
-    d = sr.Ref.Dimension: nu = sr.NuEff
+    d = sr.Ref.dimension: nu = sr.NuEff
     For i = 1 To d: h(i) = y(i) - x(i): rho = rho + h(i) * h(i): Next i
     rho = Sqr(rho): If rho <= 0 Then Fail "FMMの展開点が一致しました。遠方判定を確認してください。"
     For i = 1 To d: h(i) = h(i) / rho: Next i
@@ -117,10 +117,10 @@ Public Sub MapGeometry(ByVal g As CElementData, ByVal a As Double, ByVal b As Do
         End If
     End If
     For j = 1 To 3
-        point(j) = 0: ds(j) = 0: dt(j) = 0
-        For i = 1 To g.NG
-            point(j) = point(j) + n(i) * coords(i, j)
-            ds(j) = ds(j) + da(i) * coords(i, j): dt(j) = dt(j) + db(i) * coords(i, j)
+        point(j) = coords(1, j): ds(j) = 0: dt(j) = 0
+        For i = 1 To g.ng
+            point(j) = point(j) + n(i) * (coords(i, j) - coords(1, j))
+            ds(j) = ds(j) + da(i) * (coords(i, j) - coords(1, j)): dt(j) = dt(j) + db(i) * (coords(i, j) - coords(1, j))
         Next i
     Next j
     If g.d = 2 Then
@@ -290,7 +290,7 @@ End Function
 Public Sub Kelvin(ByVal sr As CSolveRegion, ByRef x() As Double, ByRef y() As Double, ByRef normal() As Double, ByRef uk() As Double, ByRef tk() As Double, ByRef du() As Double, ByRef dt() As Double, Optional ByVal withGradient As Boolean = False)
     Dim d As Long, i As Long, j As Long, l As Long, h(1 To 3) As Double, rho As Double, hn As Double, alpha As Double, identity As Double
     Dim cu As Double, ct As Double, hh As Double, f As Double, di As Double, dj As Double, dhn As Double, dhI As Double, dhJ As Double, df As Double
-    d = sr.Ref.Dimension
+    d = sr.Ref.dimension
     For i = 1 To d: h(i) = y(i) - x(i): rho = rho + h(i) * h(i): Next i
     rho = Sqr(rho)
     If rho <= 0 Then Fail "基本解の評価点が一致しています。特異積分が必要です。"

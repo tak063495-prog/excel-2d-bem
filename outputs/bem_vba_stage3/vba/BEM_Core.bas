@@ -152,7 +152,7 @@ Public Sub BuildModels()
         If ActiveRow(s, row, 13) Then
             Set r = New CBemRegion: r.RegionName = TextAt(s, row, 1)
             If Not ValidId(r.RegionName) Or newModels.Exists(r.RegionName) Then Fail "領域 行" & row & ": IDが不正または重複しています。"
-            r.Dimension = d: r.ElementOrder = order: r.ShapeName = UCase$(TextAt(s, row, 2)): r.MaterialId = TextAt(s, row, 3)
+            r.dimension = d: r.ElementOrder = order: r.ShapeName = UCase$(TextAt(s, row, 2)): r.MaterialId = TextAt(s, row, 3)
             If Not mats.Exists(r.MaterialId) Then Fail "領域 行" & row & ": 材料IDが見つかりません。"
             v = mats(r.MaterialId): r.Young = v(0): r.Poisson = v(1)
             If r.ShapeName = "POLYGON" Then r.Origin = Array(0#, 0#, 0#) Else r.Origin = Array(NumberAt(s, row, 4), NumberAt(s, row, 5), 0#)
@@ -230,13 +230,13 @@ Public Function MinDouble(ByVal a As Double, ByVal b As Double) As Double
 End Function
 
 Public Function PolygonArea(ByVal points As Variant) As Double
-    Dim i As Long, a As Variant, b As Variant, base As Variant
+    Dim i As Long, a As Variant, b As Variant, base As Variant, total As Double, compensation As Double
     base = points(0)
     For i = 0 To UBound(points)
         a = Sub3(points(i), base): b = Sub3(points((i + 1) Mod (UBound(points) + 1)), base)
-        PolygonArea = PolygonArea + a(0) * b(1) - a(1) * b(0)
+        CompensatedAdd total, compensation, a(0) * b(1) - a(1) * b(0)
     Next i
-    PolygonArea = PolygonArea / 2
+    PolygonArea = total / 2
 End Function
 Public Function ReadPolygon(ByVal r As CBemRegion) As Variant
     Dim s As Worksheet, items As Object, row As Long, id As String, seq As Double, i As Long, j As Long
@@ -300,7 +300,7 @@ Private Sub ReadBoundaryRules()
             If boundary <> "ALL" And Not r.groups.Exists(boundary) Then Fail id & ": 境界名 " & boundary & " がありません。"
             If r.Rules.Exists(boundary) Then Fail id & "/" & boundary & ": 境界条件が重複しています。"
             kinds = Array("t", "t", "t"): values = Array(0#, 0#, 0#)
-            For j = 0 To r.Dimension - 1
+            For j = 0 To r.dimension - 1
                 col = 3 + 2 * j: kind = LCase$(TextAt(s, row, col))
                 If kind <> "u" And kind <> "t" Then Fail "境界条件 行" & row & ": 種別はuまたはtです。"
                 kinds(j) = kind: values(j) = NumberAt(s, row, col + 1)
@@ -365,8 +365,8 @@ Private Sub MatchInterfaces()
                     Next j
                     If Not good Then Fail "接合面の幾何節点が一致しません。"
                 Next i
-                na = a.Differential(CLng(e), IIf(a.Dimension = 2, 0, 1 / 3), 1 / 3, jac)
-                nb = b.Differential(f, IIf(b.Dimension = 2, 0, 1 / 3), 1 / 3, jac)
+                na = a.Differential(CLng(e), IIf(a.dimension = 2, 0, 1 / 3), 1 / 3, jac)
+                nb = b.Differential(f, IIf(b.dimension = 2, 0, 1 / 3), 1 / 3, jac)
                 If Norm3(Add3(na, nb)) > 0.00000001 Then Fail "接合面の法線が反対向きではありません。"
                 pairs.Add f
             Next e
@@ -392,8 +392,8 @@ Private Sub ReadEvaluationPoints()
             If Not ValidId(pointId) Or allIds.Exists(id & "/" & pointId) Then Fail "評価点: 点IDが不正または重複しています。"
             allIds.Add id & "/" & pointId, True
             p = Array(NumberAt(s, row, 3), NumberAt(s, row, 4), 0#)
-            If r.Dimension = 3 Then p(2) = NumberAt(s, row, 5)
-            If r.Dimension = 2 And ZeroIfBlank(s, row, 5) <> 0 Then Fail "2Dの評価点のZは空欄または0です。"
+            If r.dimension = 3 Then p(2) = NumberAt(s, row, 5)
+            If r.dimension = 2 And ZeroIfBlank(s, row, 5) <> 0 Then Fail "2Dの評価点のZは空欄または0です。"
             If Not StrictlyInside(r, p) Then Fail id & "/" & pointId & ": 点が領域内部にありません（境界上も不可）。"
             r.points.Add p: r.PointIds.Add pointId
         End If
@@ -406,7 +406,7 @@ Public Function StrictlyInside(ByVal r As CBemRegion, ByVal p As Variant) As Boo
     Select Case r.ShapeName
     Case "RECT", "BOX"
         StrictlyInside = True
-        For i = 0 To r.Dimension - 1
+        For i = 0 To r.dimension - 1
             If q(i) <= tol Or q(i) >= r.Sizes(i) - tol Then StrictlyInside = False
         Next i
     Case "CIRCLE", "SPHERE"
@@ -444,13 +444,13 @@ Private Sub CheckRigidModes()
             For Each item In members.keys
                 done.Add item, True: Set r = Models(item)
                 For Each p In r.Vertices
-                    For j = 0 To r.Dimension - 1
+                    For j = 0 To r.dimension - 1
                         lower(j) = MinDouble(lower(j), p(j)): upper(j) = MaxDouble(upper(j), p(j))
                     Next j
                 Next p
             Next item
             center = Mul3(Add3(lower, upper), 0.5): ModelScale = MaxDouble(upper(0) - lower(0), MaxDouble(upper(1) - lower(1), upper(2) - lower(2)))
-            Set vectors = New Collection: modes = IIf(r.Dimension = 2, 3, 6)
+            Set vectors = New Collection: modes = IIf(r.dimension = 2, 3, 6)
             For Each item In members.keys
                 Set r = Models(item)
                 For Each boundary In r.groups.keys
@@ -459,9 +459,9 @@ Private Sub CheckRigidModes()
                         For Each e In r.groups(boundary)
                             For k = 0 To r.FieldCount - 1
                                 p = Mul3(Sub3(r.CollocationPoint(CLng(e), k), center), 1 / ModelScale)
-                                For j = 0 To r.Dimension - 1
+                                For j = 0 To r.dimension - 1
                                     If rule(0)(j) = "u" Then
-                                        If r.Dimension = 2 Then
+                                        If r.dimension = 2 Then
                                             If j = 0 Then row = Array(1#, 0#, -p(1)) Else row = Array(0#, 1#, p(0))
                                         Else
                                             Select Case j

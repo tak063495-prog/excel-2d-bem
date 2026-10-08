@@ -6,7 +6,7 @@ Public Sub ElementInfluence(ByVal sr As CSolveRegion, ByVal target As Long, ByVa
     Dim uk(1 To 3, 1 To 3) As Double, tk(1 To 3, 1 To 3) As Double, du(1 To 3, 1 To 3, 1 To 3) As Double, dt(1 To 3, 1 To 3, 1 To 3) As Double
     Dim positions() As Double, directions() As Double, weights() As Double, shapes() As Double, xyz() As Double
     Dim q As Long, a As Long, b As Long, l As Long, d As Long, k As Long, ownLocal As Long, wg As Double, wh As Double
-    d = sr.Ref.Dimension: k = sr.Ref.FieldCount: xyz = sr.x
+    d = sr.Ref.dimension: k = sr.Ref.FieldCount: xyz = sr.x
     ReDim gb(1 To k, 1 To d, 1 To d): ReDim hb(1 To k, 1 To d, 1 To d)
     For a = 1 To d: x(a) = xyz(target, a): Next a
     Set geom = sr.Geometries(element + 1): own = (target - 1) \ k = element
@@ -45,7 +45,7 @@ Public Sub ApplyRegion(ByVal sr As CSolveRegion, ByRef traction() As Double, ByR
 End Sub
 Public Sub SetDenseDiagonal(ByVal sr As CSolveRegion)
     Dim g() As Double, h() As Double, dg() As Double, dh() As Double, i As Long, a As Long, b As Long, d As Long
-    g = sr.g: h = sr.h: d = sr.Ref.Dimension
+    g = sr.g: h = sr.h: d = sr.Ref.dimension
     ReDim dg(1 To sr.NF, 1 To d, 1 To d): ReDim dh(1 To sr.NF, 1 To d, 1 To d)
     For i = 1 To sr.NF: For a = 1 To d: For b = 1 To d
         dg(i, a, b) = g((i - 1) * d + a, (i - 1) * d + b): dh(i, a, b) = h((i - 1) * d + a, (i - 1) * d + b)

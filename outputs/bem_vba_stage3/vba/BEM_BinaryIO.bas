@@ -31,7 +31,7 @@ Private Function NPYBuffer(ByVal dtype As String, ByVal shape As String) As CByt
 End Function
 Private Sub AddEntry(ByVal entries As Collection, ByVal name As String, ByVal buffer As CByteBuffer)
     Dim entry As CZipEntry, content() As Byte
-    Set entry = New CZipEntry: entry.name = name & ".npy": content = buffer.bytes: entry.content = content: entry.size = UBound(content) + 1: entry.CRC = CRC32(content): entries.Add entry
+    Set entry = New CZipEntry: entry.name = name & ".npy": content = buffer.bytes: entry.content = content: entry.Size = UBound(content) + 1: entry.CRC = CRC32(content): entries.Add entry
 End Sub
 Private Sub WriteZIP(ByVal entries As Collection, ByVal path As String)
     Dim buffer As CByteBuffer, entry As CZipEntry, content() As Byte, centralStart As Long, centralSize As Long
@@ -41,13 +41,13 @@ Private Sub WriteZIP(ByVal entries As Collection, ByVal path As String)
         entry.Offset = buffer.Count
         buffer.AppendUInt32 &H4034B50: buffer.AppendUInt16 20: buffer.AppendUInt16 0: buffer.AppendUInt16 0
         buffer.AppendUInt16 0: buffer.AppendUInt16 33: buffer.AppendUInt32 CDbl(entry.CRC)
-        buffer.AppendUInt32 CDbl(entry.size): buffer.AppendUInt32 CDbl(entry.size): buffer.AppendUInt16 Len(entry.name): buffer.AppendUInt16 0
+        buffer.AppendUInt32 CDbl(entry.Size): buffer.AppendUInt32 CDbl(entry.Size): buffer.AppendUInt16 Len(entry.name): buffer.AppendUInt16 0
         buffer.AppendASCII entry.name: content = entry.content: buffer.AppendBytes content
     Next entry
     centralStart = buffer.Count
     For Each entry In entries
         buffer.AppendUInt32 &H2014B50: buffer.AppendUInt16 20: buffer.AppendUInt16 20: buffer.AppendUInt16 0: buffer.AppendUInt16 0
-        buffer.AppendUInt16 0: buffer.AppendUInt16 33: buffer.AppendUInt32 CDbl(entry.CRC): buffer.AppendUInt32 CDbl(entry.size): buffer.AppendUInt32 CDbl(entry.size)
+        buffer.AppendUInt16 0: buffer.AppendUInt16 33: buffer.AppendUInt32 CDbl(entry.CRC): buffer.AppendUInt32 CDbl(entry.Size): buffer.AppendUInt32 CDbl(entry.Size)
         buffer.AppendUInt16 Len(entry.name): buffer.AppendUInt16 0: buffer.AppendUInt16 0: buffer.AppendUInt16 0: buffer.AppendUInt16 0
         buffer.AppendUInt32 0: buffer.AppendUInt32 CDbl(entry.Offset): buffer.AppendASCII entry.name
     Next entry
@@ -65,7 +65,7 @@ Public Sub SaveSolutionNPZ(ByVal folder As String)
     last = WS("“à“_Œ‹‰Ê").Cells(WS("“à“_Œ‹‰Ê").rows.Count, 1).End(xlUp).row
     If last >= FIRST_ROW Then interior = WS("“à“_Œ‹‰Ê").Range("A6:Q" & last).Value2
     For Each name In SolveData.keys
-        Set sr = SolveData(name): Set r = sr.Ref: d = r.Dimension: prefix = "region_" & region & "_": region = region + 1
+        Set sr = SolveData(name): Set r = sr.Ref: d = r.dimension: prefix = "region_" & region & "_": region = region + 1
         Set buffer = NPYBuffer("<f8", "(" & r.Vertices.Count & ", " & d & ")")
         For Each point In r.Vertices: For j = 0 To d - 1: buffer.AppendDouble CDbl(point(j)): Next j: Next point
         AddEntry entries, prefix & "vertices", buffer
@@ -74,7 +74,7 @@ Public Sub SaveSolutionNPZ(ByVal folder As String)
         AddEntry entries, prefix & "elements", buffer
         xyz = sr.X: u = sr.u: t = sr.t
         Set buffer = NPYBuffer("<f8", "(" & sr.NF & ", " & d & ")")
-        For i = 1 To sr.NF: For j = 1 To d: buffer.AppendDouble xyz(i, j): Next j: Next i
+        For i = 1 To sr.NF: For j = 1 To d: buffer.AppendDouble sr.WorldCoordinate(i, j): Next j: Next i
         AddEntry entries, prefix & "collocation", buffer
         Set buffer = NPYBuffer("<f8", "(" & sr.NF & ", " & d & ")")
         For i = 1 To sr.ND: buffer.AppendDouble u(i): Next i

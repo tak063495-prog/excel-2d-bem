@@ -7,7 +7,7 @@
       "status": "PASS",
       "detail": {
         "selected": "dense",
-        "residual": 2.96147862859517e-11,
+        "residual": 2.961471722170062e-11,
         "iterations": 32
       }
     },
@@ -16,7 +16,7 @@
       "status": "PASS",
       "detail": {
         "selected": "dense",
-        "residual": 9.91432797216705e-16,
+        "residual": 1.0500077040573987e-15,
         "iterations": 0
       }
     },
@@ -25,7 +25,7 @@
       "status": "PASS",
       "detail": {
         "selected": "dense",
-        "residual": 2.96147862859517e-11,
+        "residual": 2.961471722170062e-11,
         "iterations": 32
       }
     },
@@ -34,7 +34,7 @@
       "status": "PASS",
       "detail": {
         "selected": "fmm",
-        "residual": 2.96148058459845e-11,
+        "residual": 2.9614822561861546e-11,
         "iterations": 32
       }
     },
@@ -52,7 +52,7 @@
         "near_pairs": 292,
         "near_entries": 7592,
         "translation_groups": 92,
-        "near_matrix_MB": 0.492893218994141,
+        "near_matrix_MB": 0.4928932189941406,
         "m2l_cache_MB": 0,
         "cache_limit_MB": 0,
         "cache_hits": 0,
@@ -73,7 +73,7 @@
         "near_pairs": 292,
         "near_entries": 7592,
         "translation_groups": 92,
-        "near_matrix_MB": 0.492893218994141,
+        "near_matrix_MB": 0.4928932189941406,
         "m2l_cache_MB": 0.0234375,
         "cache_limit_MB": 0.035,
         "cache_hits": 0,
@@ -124,9 +124,9 @@
         "error_code": "LINEAR_SOLVE_TOLERANCE_UNMET",
         "residual_normalization": "RHS; absolute-term scale when RHS is below arithmetic roundoff",
         "converged": false,
-        "true_relative_residual": 0.744068368013878,
+        "true_relative_residual": 0.7440683680138784,
         "DOF": 288,
-        "seconds": 1.03515625,
+        "seconds": 1.0703125,
         "interface_displacement_jump_max": 0,
         "interface_traction_imbalance_max": 0
       }
@@ -139,12 +139,12 @@
     {
       "test": "explicit internal quadrature gauss",
       "status": "PASS",
-      "detail": "OK: 96 DOF / residual=2.96147862859517E-11"
+      "detail": "OK: 96 DOF / residual=2.9614717221700622E-11"
     },
     {
       "test": "explicit internal quadrature de",
       "status": "PASS",
-      "detail": "OK: 96 DOF / residual=2.96147862859517E-11"
+      "detail": "OK: 96 DOF / residual=2.9614717221700622E-11"
     },
     {
       "test": "invalid FMM/GMRES setting B49",
@@ -221,5 +221,6 @@
       "status": "PASS",
       "detail": "ERROR: 操作!B49: 0～6の整数を指定してください。"
     }
-  ]
+  ],
+  "verified_on": "2026-10-09"
 }

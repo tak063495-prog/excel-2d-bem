@@ -2,6 +2,11 @@ Attribute VB_Name = "BEM_Mesh"
 Option Explicit
 Public Const PI As Double = 3.14159265358979
 
+Public Sub CompensatedAdd(ByRef total As Double, ByRef compensation As Double, ByVal value As Double)
+    Dim adjusted As Double, updated As Double
+    adjusted = value - compensation: updated = total + adjusted
+    compensation = (updated - total) - adjusted: total = updated
+End Sub
 Public Function Add3(ByVal a As Variant, ByVal b As Variant) As Variant
     Add3 = Array(a(0) + b(0), a(1) + b(1), a(2) + b(2))
 End Function
@@ -142,18 +147,19 @@ Public Sub ValidateTopology(ByVal r As CBemRegion)
     Dim edges As Object, links As Object, seen As Object, starts As Object, adj As Object
     Dim e As Long, j As Long, a As Long, b As Long, mid As Long, p As Long, sign As Long
     Dim ids As Variant, q As Variant, uses As Variant, key As Variant, c As Variant, n As Variant, jac As Double
-    Dim area As Double, volume As Double, queue As Collection, row As Collection, other As Variant
+    Dim area As Double, areaScale As Double, compensation As Double, term As Double, volume As Double, queue As Collection, row As Collection, other As Variant
     Set edges = CreateObject("Scripting.Dictionary"): Set adj = CreateObject("Scripting.Dictionary")
     Set starts = CreateObject("Scripting.Dictionary")
     For e = 0 To r.elements.count - 1
         ids = r.elements(e + 1)
-        n = r.Differential(e, IIf(r.Dimension = 2, 0, 1 / 3), 1 / 3, jac)
-        If r.Dimension = 2 Then
+        n = r.Differential(e, IIf(r.dimension = 2, 0, 1 / 3), 1 / 3, jac)
+        If r.dimension = 2 Then
             a = ids(0): b = ids(UBound(ids))
             If starts.Exists(CStr(a)) Then Fail r.RegionName & ": 輪郭が分岐しています。"
             starts.Add CStr(a), b
-            q = r.Vertices(a + 1): c = r.Vertices(b + 1)
-            area = area + q(0) * c(1) - q(1) * c(0)
+            q = Sub3(r.Vertices(a + 1), r.Origin): c = Sub3(r.Vertices(b + 1), r.Origin)
+            term = q(0) * c(1) - q(1) * c(0)
+            CompensatedAdd area, compensation, term: areaScale = areaScale + Abs(term)
         Else
             Set row = New Collection: adj.Add CStr(e), row
             q = r.Vertices(ids(0) + 1): c = r.Vertices(ids(1) + 1)
@@ -180,13 +186,13 @@ Public Sub ValidateTopology(ByVal r As CBemRegion)
         End If
     Next e
     Set seen = CreateObject("Scripting.Dictionary")
-    If r.Dimension = 2 Then
+    If r.dimension = 2 Then
         ids = r.elements(1): p = ids(0)
         For e = 1 To r.elements.count
             If seen.Exists(CStr(p)) Or Not starts.Exists(CStr(p)) Then Fail r.RegionName & ": 単一の閉輪郭ではありません。"
             seen.Add CStr(p), True: p = starts(CStr(p))
         Next e
-        If p <> ids(0) Or area <= 0 Then Fail r.RegionName & ": 反時計回りの閉輪郭が必要です。"
+        If p <> ids(0) Or area <= 64 * 2.22044604925031E-16 * areaScale Then Fail r.RegionName & ": 反時計回りの非退化な閉輪郭が必要です。"
     Else
         For Each key In edges.keys
             uses = edges(key): If uses(3) <> 2 Then Fail r.RegionName & ": 表面が閉じていません。"
@@ -211,7 +217,7 @@ End Function
 Public Function ElementMeasure(ByVal r As CBemRegion, ByVal e As Long) As Double
     Dim x As Variant, w As Variant, i As Long, jac As Double, n As Variant
     Dim a As Variant, b As Variant, c As Variant, ids As Variant
-    If r.Dimension = 2 Then
+    If r.dimension = 2 Then
         x = Array(-0.906179845938664, -0.538469310105683, 0#, 0.538469310105683, 0.906179845938664)
         w = Array(0.236926885056189, 0.478628670499366, 0.568888888888889, 0.478628670499366, 0.236926885056189)
         For i = 0 To 4
@@ -229,7 +235,7 @@ End Function
 Public Function MaxEdge(ByVal r As CBemRegion, ByVal e As Long) As Double
     Dim ids As Variant, i As Long, j As Long, length As Double
     ids = r.elements(e + 1)
-    If r.Dimension = 2 Then
+    If r.dimension = 2 Then
         MaxEdge = Norm3(Sub3(r.Vertices(ids(0) + 1), r.Vertices(ids(UBound(ids)) + 1)))
     Else
         For i = 0 To 2
@@ -257,7 +263,7 @@ Public Function InsideRoundMesh(ByVal r As CBemRegion, ByVal point As Variant) A
     direction = Mul3(delta, 1 / distance): minusDir = Mul3(direction, -1): coordTol = 0.000000001
     For e = 0 To r.elements.count - 1
         ids = r.elements(e + 1): a = Sub3(r.Vertices(ids(0) + 1), r.Origin): candidate = False
-        If r.Dimension = 2 Then
+        If r.dimension = 2 Then
             b = Sub3(r.Vertices(ids(UBound(ids)) + 1), r.Origin): u = Sub3(b, a)
             denom = Cross2(direction, u)
             If Abs(denom) > r.ModelScale * 0.000000000001 Then
@@ -279,16 +285,16 @@ Public Function InsideRoundMesh(ByVal r As CBemRegion, ByVal point As Variant) A
         If candidate Then
             If r.ElementOrder = 2 Then
                 For iteration = 1 To 12
-                    If r.Dimension = 2 Then
-                        residual = Sub3(Sub3(r.position(e, s), r.Origin), Mul3(direction, t))
-                        da = Mul3(Sub3(r.position(e, s + 0.001), r.position(e, s - 0.001)), 500)
+                    If r.dimension = 2 Then
+                        residual = Sub3(r.LocalPosition(e, s), Mul3(direction, t))
+                        da = Mul3(Sub3(r.LocalPosition(e, s + 0.001), r.LocalPosition(e, s - 0.001)), 500)
                         det = Cross2(da, minusDir)
                         stepA = Cross2(residual, minusDir) / det: stepT = Cross2(da, residual) / det
                         s = s - stepA: t = t - stepT
                     Else
-                        residual = Sub3(Sub3(r.position(e, aa, bb), r.Origin), Mul3(direction, t))
-                        da = Mul3(Sub3(r.position(e, aa + 0.001, bb), r.position(e, aa - 0.001, bb)), 500)
-                        db = Mul3(Sub3(r.position(e, aa, bb + 0.001), r.position(e, aa, bb - 0.001)), 500)
+                        residual = Sub3(r.LocalPosition(e, aa, bb), Mul3(direction, t))
+                        da = Mul3(Sub3(r.LocalPosition(e, aa + 0.001, bb), r.LocalPosition(e, aa - 0.001, bb)), 500)
+                        db = Mul3(Sub3(r.LocalPosition(e, aa, bb + 0.001), r.LocalPosition(e, aa, bb - 0.001)), 500)
                         det = Dot3(da, Cross3(db, minusDir))
                         stepA = Dot3(residual, Cross3(db, minusDir)) / det
                         stepB = Dot3(da, Cross3(residual, minusDir)) / det

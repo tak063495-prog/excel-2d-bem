@@ -14,10 +14,11 @@ Private SystemLU() As Double, Permutation() As Long, RowScale() As Double, RHS()
 Private Sub InitializeRegion(ByVal sr As CSolveRegion, ByVal r As CBemRegion)
     Dim e As Long, i As Long, j As Long, a As Double, b As Double, geom As CElementData, rule As CIntegrationRule
     Dim p As Variant, n As Variant, jac As Double, lower As Variant, upper As Variant, point As Variant
+    Dim localPoint(1 To 3) As Double, normal(1 To 3) As Double, ds(1 To 3) As Double, dt(1 To 3) As Double
     Dim stage As String, message As String, number As Long
     On Error GoTo Failed
     stage = "材料・配列"
-    Set sr.Ref = r: sr.NF = r.Elements.Count * r.FieldCount: sr.ND = sr.NF * r.Dimension
+    Set sr.Ref = r: sr.FrameOrigin = r.Origin: sr.NF = r.Elements.Count * r.FieldCount: sr.ND = sr.NF * r.Dimension
     sr.Mu = r.Young / (2 * (1 + r.Poisson)): sr.NuEff = r.Poisson
     If r.Dimension = 2 And TextAt(WS("操作"), 6, 2) = "plane_stress" Then sr.NuEff = r.Poisson / (1 + r.Poisson)
     sr.IsPlaneStrain = r.Dimension = 2 And TextAt(WS("操作"), 6, 2) = "plane_strain"
@@ -31,15 +32,15 @@ Private Sub InitializeRegion(ByVal sr As CSolveRegion, ByVal r As CBemRegion)
     Set sr.Geometries = New Collection: Set rule = RegularRule(r.Dimension, BoundaryOrder)
     For e = 0 To r.Elements.Count - 1
         stage = "要素幾何 " & e
-        Set geom = New CElementData: geom.Initialize r, e
+        Set geom = New CElementData: geom.Initialize r, e, sr.FrameOrigin
         stage = "積分点準備 " & e
         Set geom.Regular = New CElementRule: geom.Regular.Initialize geom, rule: sr.Geometries.Add geom
         stage = "場節点 " & e
         For i = 1 To r.FieldCount
-            p = r.CollocationPoint(e, i - 1): FieldParameters r.Dimension, r.ElementOrder, i, a, b
-            n = r.Differential(e, a, b, jac)
+            FieldParameters r.Dimension, r.ElementOrder, i, a, b
+            MapGeometry geom, a, b, localPoint, normal, jac, ds, dt
             For j = 1 To r.Dimension
-                sr.SetField e * r.FieldCount + i, j, p(j - 1), n(j - 1)
+                sr.SetField e * r.FieldCount + i, j, localPoint(j), normal(j)
             Next j
         Next i
     Next e
@@ -85,7 +86,7 @@ Private Sub SetUnknownMaps()
                 ia = CLng(e) * a.Ref.FieldCount + l: nearest = 1E+250: best = 0
                 For j = 1 To b.Ref.FieldCount
                     ib = f * b.Ref.FieldCount + j: distance = 0
-                    For i = 1 To d: distance = distance + (a.X(ia, i) - b.X(ib, i)) ^ 2: Next i
+                    For i = 1 To d: distance = distance + ((a.FrameOrigin(i - 1) - b.FrameOrigin(i - 1)) + a.X(ia, i) - b.X(ib, i)) ^ 2: Next i
                     If distance < nearest Then nearest = distance: best = ib
                 Next j
                 If Sqr(nearest) > MaxDouble(a.MeshScale, b.MeshScale) * 1E-9 Then Fail "接合面の場節点が一致しません。"
@@ -412,8 +413,8 @@ Public Function BoundaryResultRows() As Collection
     For Each name In SolveData.Keys
         Set sr = SolveData(name): d = sr.Ref.Dimension: k = sr.Ref.FieldCount
         For i = 1 To sr.NF
-            row = Array(CStr(name), i, (i - 1) \ k + 1, (i - 1) Mod k + 1, sr.X(i, 1), sr.X(i, 2), Empty, Empty, Empty, Empty, Empty, Empty, Empty)
-            If d = 3 Then row(6) = sr.X(i, 3)
+            row = Array(CStr(name), i, (i - 1) \ k + 1, (i - 1) Mod k + 1, sr.WorldCoordinate(i, 1), sr.WorldCoordinate(i, 2), Empty, Empty, Empty, Empty, Empty, Empty, Empty)
+            If d = 3 Then row(6) = sr.WorldCoordinate(i, 3)
             For j = 1 To d: row(6 + j) = sr.U((i - 1) * d + j): row(9 + j) = sr.T((i - 1) * d + j): Next j
             rows.Add row
         Next i

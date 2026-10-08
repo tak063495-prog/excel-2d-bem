@@ -26,7 +26,7 @@ Public Sub SaveSolvedResults(ByVal folder As String)
         lines.Add JoinCollection(header, ",")
         For i = 1 To sr.NF
             Set cols = New Collection
-            For j = 1 To d: cols.Add JNum(xyz(i, j)): Next j
+            For j = 1 To d: cols.Add JNum(sr.WorldCoordinate(i, j)): Next j
             For j = 1 To d: cols.Add JNum(uv((i - 1) * d + j)): Next j
             For j = 1 To d: cols.Add JNum(tv((i - 1) * d + j)): Next j
             lines.Add JoinCollection(cols, ",")

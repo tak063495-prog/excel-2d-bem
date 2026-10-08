@@ -1,5 +1,5 @@
 {
-  "verified_on": "2026-10-08",
+  "verified_on": "2026-10-09",
   "all_passed": true,
   "test_count": 23,
   "tests": [
@@ -12,9 +12,9 @@
           "left": "dense",
           "right": "fmm"
         },
-        "residual": 9.49322324330219e-11,
+        "residual": 9.493188615832416e-11,
         "max_u_difference_m": 2.42861286636753e-17,
-        "max_t_difference_kPa": 2.2600532556538155e-11
+        "max_t_difference_kPa": 1.505096047793586e-11
       }
     },
     {
@@ -25,9 +25,9 @@
         "backends": {
           "block": "fmm"
         },
-        "residual": 6.8138987640015e-11,
-        "max_u_difference_m": 3.384701373343457e-13,
-        "max_t_difference_kPa": 4.205894299502688e-08
+        "residual": 6.813887134588154e-11,
+        "max_u_difference_m": 3.3848878561171247e-13,
+        "max_t_difference_kPa": 4.2051709669976844e-08
       }
     },
     {
@@ -38,9 +38,9 @@
         "backends": {
           "block": "fmm"
         },
-        "residual": 7.2710908283233e-11,
-        "max_u_difference_m": 2.1510571102112408e-16,
-        "max_t_difference_kPa": 1.9184653865522705e-12
+        "residual": 7.271099097987504e-11,
+        "max_u_difference_m": 1.734723475976807e-16,
+        "max_t_difference_kPa": 2.647589126492727e-12
       }
     },
     {
@@ -51,9 +51,9 @@
         "backends": {
           "block": "fmm"
         },
-        "residual": 9.05078501770031e-11,
-        "max_u_difference_m": 5.715407314088594e-12,
-        "max_t_difference_kPa": 4.0142211332749866e-08
+        "residual": 9.050781190108265e-11,
+        "max_u_difference_m": 5.7153864974068824e-12,
+        "max_t_difference_kPa": 4.014266608010075e-08
       }
     },
     {
@@ -64,9 +64,9 @@
         "backends": {
           "block": "fmm"
         },
-        "residual": 9.93211478787256e-11,
-        "max_u_difference_m": 5.421010862427522e-18,
-        "max_t_difference_kPa": 3.197442310920451e-13
+        "residual": 9.932105380203253e-11,
+        "max_u_difference_m": 6.7220534694101275e-18,
+        "max_t_difference_kPa": 3.339550858072471e-13
       }
     },
     {
