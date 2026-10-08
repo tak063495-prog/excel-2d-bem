@@ -1,0 +1,225 @@
+{
+  "test_count": 29,
+  "all_passed": true,
+  "tests": [
+    {
+      "test": "dense / gmres dense cap=1200",
+      "status": "PASS",
+      "detail": {
+        "selected": "dense",
+        "residual": 2.96147862859517e-11,
+        "iterations": 32
+      }
+    },
+    {
+      "test": "dense / lu dense cap=1200",
+      "status": "PASS",
+      "detail": {
+        "selected": "dense",
+        "residual": 9.91432797216705e-16,
+        "iterations": 0
+      }
+    },
+    {
+      "test": "auto / gmres dense cap=1200",
+      "status": "PASS",
+      "detail": {
+        "selected": "dense",
+        "residual": 2.96147862859517e-11,
+        "iterations": 32
+      }
+    },
+    {
+      "test": "auto / gmres dense cap=12",
+      "status": "PASS",
+      "detail": {
+        "selected": "fmm",
+        "residual": 2.96148058459845e-11,
+        "iterations": 32
+      }
+    },
+    {
+      "test": "FMM bounded LRU cache=0 MB",
+      "status": "PASS",
+      "detail": {
+        "backend": "fmm",
+        "elements": 48,
+        "field_nodes": 144,
+        "p": 4,
+        "nodes": 45,
+        "leaves": 28,
+        "far_pairs": 196,
+        "near_pairs": 292,
+        "near_entries": 7592,
+        "translation_groups": 92,
+        "near_matrix_MB": 0.492893218994141,
+        "m2l_cache_MB": 0,
+        "cache_limit_MB": 0,
+        "cache_hits": 0,
+        "cache_misses": 4324
+      }
+    },
+    {
+      "test": "FMM bounded LRU cache=0.035 MB",
+      "status": "PASS",
+      "detail": {
+        "backend": "fmm",
+        "elements": 48,
+        "field_nodes": 144,
+        "p": 4,
+        "nodes": 45,
+        "leaves": 28,
+        "far_pairs": 196,
+        "near_pairs": 292,
+        "near_entries": 7592,
+        "translation_groups": 92,
+        "near_matrix_MB": 0.492893218994141,
+        "m2l_cache_MB": 0.0234375,
+        "cache_limit_MB": 0.035,
+        "cache_hits": 0,
+        "cache_misses": 4324
+      }
+    },
+    {
+      "test": "VBA CSV/NPZ/VTK export 2D order=0",
+      "status": "PASS",
+      "detail": {
+        "report_method": "gmres",
+        "schema": "original Python compatible"
+      }
+    },
+    {
+      "test": "VBA CSV/NPZ/VTK export 2D order=2",
+      "status": "PASS",
+      "detail": {
+        "report_method": "gmres",
+        "schema": "original Python compatible"
+      }
+    },
+    {
+      "test": "VBA CSV/NPZ/VTK export 3D order=0",
+      "status": "PASS",
+      "detail": {
+        "report_method": "gmres",
+        "schema": "original Python compatible"
+      }
+    },
+    {
+      "test": "VBA CSV/NPZ/VTK export 3D order=2",
+      "status": "PASS",
+      "detail": {
+        "report_method": "gmres",
+        "schema": "original Python compatible"
+      }
+    },
+    {
+      "test": "GMRES iteration limit retains computed solution",
+      "status": "PASS",
+      "detail": {
+        "backend": "fmm",
+        "method": "gmres",
+        "gmres_info": 1,
+        "iterations": 1,
+        "restart_cycles": 1,
+        "error_code": "LINEAR_SOLVE_TOLERANCE_UNMET",
+        "residual_normalization": "RHS; absolute-term scale when RHS is below arithmetic roundoff",
+        "converged": false,
+        "true_relative_residual": 0.744068368013878,
+        "DOF": 288,
+        "seconds": 1.03515625,
+        "interface_displacement_jump_max": 0,
+        "interface_traction_imbalance_max": 0
+      }
+    },
+    {
+      "test": "unavailable internal fields preserved in NPZ/CSV/report",
+      "status": "PASS",
+      "detail": "NaN arrays and False flags"
+    },
+    {
+      "test": "explicit internal quadrature gauss",
+      "status": "PASS",
+      "detail": "OK: 96 DOF / residual=2.96147862859517E-11"
+    },
+    {
+      "test": "explicit internal quadrature de",
+      "status": "PASS",
+      "detail": "OK: 96 DOF / residual=2.96147862859517E-11"
+    },
+    {
+      "test": "invalid FMM/GMRES setting B49",
+      "status": "PASS",
+      "detail": "ERROR: FMM次数pは0（自動）または2D:2～8、3D:2～6です。"
+    },
+    {
+      "test": "invalid FMM/GMRES setting B50",
+      "status": "PASS",
+      "detail": "ERROR: 操作!B50: 1～10000の整数を指定してください。"
+    },
+    {
+      "test": "invalid FMM/GMRES setting B51",
+      "status": "PASS",
+      "detail": "ERROR: FMM thetaは0より大きく1より小さい数です。"
+    },
+    {
+      "test": "invalid FMM/GMRES setting B52",
+      "status": "PASS",
+      "detail": "ERROR: FMMキャッシュは0～8192 MBです。"
+    },
+    {
+      "test": "invalid FMM/GMRES setting B53",
+      "status": "PASS",
+      "detail": "ERROR: モデルのメモリ上限は0より大きく16384 MB以下です。"
+    },
+    {
+      "test": "invalid FMM/GMRES setting B54",
+      "status": "PASS",
+      "detail": "ERROR: 操作!B54: 1～100000の整数を指定してください。"
+    },
+    {
+      "test": "invalid FMM/GMRES setting B55",
+      "status": "PASS",
+      "detail": "ERROR: 操作!B55: 1～1000の整数を指定してください。"
+    },
+    {
+      "test": "invalid FMM/GMRES setting B56",
+      "status": "PASS",
+      "detail": "ERROR: 操作!B56: 1～10000の整数を指定してください。"
+    },
+    {
+      "test": "invalid FMM/GMRES setting B57",
+      "status": "PASS",
+      "detail": "ERROR: 未知数 288 がモデル上限 1 を超えます。分割を減らすか上限を変更してください。"
+    },
+    {
+      "test": "invalid FMM/GMRES setting B58",
+      "status": "PASS",
+      "detail": "ERROR: FMMでは求解法gmresを選択してください。"
+    },
+    {
+      "test": "invalid FMM/GMRES setting B59",
+      "status": "PASS",
+      "detail": "ERROR: 内点積分方式はauto、gauss、deです。"
+    },
+    {
+      "test": "invalid FMM/GMRES setting B60",
+      "status": "PASS",
+      "detail": "ERROR: 内点近接判定・最小距離比は正の数です。"
+    },
+    {
+      "test": "invalid FMM/GMRES setting B61",
+      "status": "PASS",
+      "detail": "ERROR: 内点近接判定・最小距離比は正の数です。"
+    },
+    {
+      "test": "FMM model memory rejection before near allocation",
+      "status": "PASS",
+      "detail": "ERROR: block: FMMの未知数またはメモリ上限を超えます。分割・p・キャッシュを減らしてください。"
+    },
+    {
+      "test": "3D p upper bound",
+      "status": "PASS",
+      "detail": "ERROR: 操作!B49: 0～6の整数を指定してください。"
+    }
+  ]
+}

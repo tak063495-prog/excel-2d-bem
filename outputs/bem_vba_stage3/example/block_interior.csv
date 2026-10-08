@@ -1,0 +1,2 @@
+x_m,y_m,ux_m,uy_m,sxx_kPa,syy_kPa,szz_kPa,sxy_kPa,syz_kPa,szx_kPa,quadrature_converged,error_code,value_available
+0.5,0.5,1.51666651761194E-03,-6.50000208671882E-04,99.999996119799,-9.79077199070311E-06,29.9999958987081,7.52593727337825E-07,0,0,True,OK,True

@@ -1,0 +1,4 @@
+numpy==2.3.5
+scipy==1.18.1
+pywin32==312; sys_platform == "win32"
+threadpoolctl==3.7.0

@@ -1,0 +1,96 @@
+{
+  "test_count": 11,
+  "all_passed": true,
+  "tests": [
+    {
+      "test": "closest point near 2D_RECT",
+      "status": "PASS",
+      "detail": {
+        "max_distance_difference_m": 2.220446049250313e-16
+      }
+    },
+    {
+      "test": "near-boundary adaptive fields 2D_RECT",
+      "status": "PASS",
+      "detail": {
+        "stress_max_difference_kPa": 7.503331289626658e-12,
+        "converged": true,
+        "seconds": 0.06429910659790039
+      }
+    },
+    {
+      "test": "closest point near 2D_CIRCLE",
+      "status": "PASS",
+      "detail": {
+        "max_distance_difference_m": 2.220446049250313e-16
+      }
+    },
+    {
+      "test": "near-boundary adaptive fields 2D_CIRCLE",
+      "status": "PASS",
+      "detail": {
+        "stress_max_difference_kPa": 1.509903313490213e-13,
+        "converged": true,
+        "seconds": 0.0387272834777832
+      }
+    },
+    {
+      "test": "closest point near 3D_BOX",
+      "status": "PASS",
+      "detail": {
+        "max_distance_difference_m": 0.0
+      }
+    },
+    {
+      "test": "near-boundary adaptive fields 3D_BOX",
+      "status": "PASS",
+      "detail": {
+        "stress_max_difference_kPa": 6.536993168992922e-13,
+        "converged": true,
+        "seconds": 6.230052709579468
+      }
+    },
+    {
+      "test": "closest point near 3D_SPHERE",
+      "status": "PASS",
+      "detail": {
+        "max_distance_difference_m": 4.440892098500626e-16
+      }
+    },
+    {
+      "test": "near-boundary adaptive fields 3D_SPHERE",
+      "status": "PASS",
+      "detail": {
+        "stress_max_difference_kPa": 6.252776074688882e-13,
+        "converged": true,
+        "seconds": 8.592279434204102
+      }
+    },
+    {
+      "test": "VBA solve/export/import 2D",
+      "status": "PASS",
+      "detail": {
+        "relative_residual": 5.83389367361958e-10,
+        "CSV_schema": "Python compatible"
+      }
+    },
+    {
+      "test": "VBA solve/export/import 3D",
+      "status": "PASS",
+      "detail": {
+        "relative_residual": 1.62984345122255e-10,
+        "CSV_schema": "Python compatible"
+      }
+    },
+    {
+      "test": "geometry/material scaling",
+      "status": "PASS",
+      "detail": {
+        "size_m": 0.001,
+        "E_kPa": 30000000.0,
+        "sxx_kPa": 99.99999999532331,
+        "status": "OK: 96 DOF / residual=6.0284996642886E-10"
+      }
+    }
+  ]
+}

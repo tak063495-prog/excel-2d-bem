@@ -38,3 +38,15 @@
 #*.[pP][oO][tT][mM]
 #*.[pP][pP][sS]
 #*.[pP][pP][sS][mM]
+
+# Elastic BEM VBA development files
+.venv/
+node_modules/
+__pycache__/
+*.pyc
+~$*
+qa_stage3/*
+!qa_stage3/QA_Fmm.vba
+qa_stage2/*
+!qa_stage2/QA_Solver.vba
+model_output/

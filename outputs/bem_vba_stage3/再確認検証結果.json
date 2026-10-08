@@ -1,0 +1,163 @@
+{
+  "verified_on": "2026-10-08",
+  "all_passed": true,
+  "test_count": 23,
+  "tests": [
+    {
+      "test": "mixed dense/FMM bonded two-material regions",
+      "status": "PASS",
+      "detail": {
+        "DOF": 432,
+        "backends": {
+          "left": "dense",
+          "right": "fmm"
+        },
+        "residual": 9.49322324330219e-11,
+        "max_u_difference_m": 2.42861286636753e-17,
+        "max_t_difference_kPa": 2.2600532556538155e-11
+      }
+    },
+    {
+      "test": "translated geometry with non-axial traction",
+      "status": "PASS",
+      "detail": {
+        "DOF": 288,
+        "backends": {
+          "block": "fmm"
+        },
+        "residual": 6.8138987640015e-11,
+        "max_u_difference_m": 3.384701373343457e-13,
+        "max_t_difference_kPa": 4.205894299502688e-08
+      }
+    },
+    {
+      "test": "FMM material range plane_stress nu=-0.25",
+      "status": "PASS",
+      "detail": {
+        "DOF": 192,
+        "backends": {
+          "block": "fmm"
+        },
+        "residual": 7.2710908283233e-11,
+        "max_u_difference_m": 2.1510571102112408e-16,
+        "max_t_difference_kPa": 1.9184653865522705e-12
+      }
+    },
+    {
+      "test": "FMM material range plane_strain nu=0.49",
+      "status": "PASS",
+      "detail": {
+        "DOF": 192,
+        "backends": {
+          "block": "fmm"
+        },
+        "residual": 9.05078501770031e-11,
+        "max_u_difference_m": 5.715407314088594e-12,
+        "max_t_difference_kPa": 4.0142211332749866e-08
+      }
+    },
+    {
+      "test": "3D auxetic material with three traction components",
+      "status": "PASS",
+      "detail": {
+        "DOF": 216,
+        "backends": {
+          "block": "fmm"
+        },
+        "residual": 9.93211478787256e-11,
+        "max_u_difference_m": 5.421010862427522e-18,
+        "max_t_difference_kPa": 3.197442310920451e-13
+      }
+    },
+    {
+      "test": "boundary-only solve and Unicode-folder export/import",
+      "status": "PASS",
+      "detail": "CSV/NPZ/report valid without interior points"
+    },
+    {
+      "test": "interleaved multi-region point IDs and NPZ ordering",
+      "status": "PASS",
+      "detail": "two points per region; IDs and values retained"
+    },
+    {
+      "test": "solver input invalidates saved solution B13",
+      "status": "PASS",
+      "detail": "solution and field reports cleared; stale result labelled"
+    },
+    {
+      "test": "solver input invalidates saved solution B49",
+      "status": "PASS",
+      "detail": "solution and field reports cleared; stale result labelled"
+    },
+    {
+      "test": "solver input invalidates saved solution B50",
+      "status": "PASS",
+      "detail": "solution and field reports cleared; stale result labelled"
+    },
+    {
+      "test": "solver input invalidates saved solution B51",
+      "status": "PASS",
+      "detail": "solution and field reports cleared; stale result labelled"
+    },
+    {
+      "test": "solver input invalidates saved solution B52",
+      "status": "PASS",
+      "detail": "solution and field reports cleared; stale result labelled"
+    },
+    {
+      "test": "solver input invalidates saved solution B53",
+      "status": "PASS",
+      "detail": "solution and field reports cleared; stale result labelled"
+    },
+    {
+      "test": "solver input invalidates saved solution B54",
+      "status": "PASS",
+      "detail": "solution and field reports cleared; stale result labelled"
+    },
+    {
+      "test": "solver input invalidates saved solution B55",
+      "status": "PASS",
+      "detail": "solution and field reports cleared; stale result labelled"
+    },
+    {
+      "test": "solver input invalidates saved solution B56",
+      "status": "PASS",
+      "detail": "solution and field reports cleared; stale result labelled"
+    },
+    {
+      "test": "solver input invalidates saved solution B57",
+      "status": "PASS",
+      "detail": "solution and field reports cleared; stale result labelled"
+    },
+    {
+      "test": "solver input invalidates saved solution B58",
+      "status": "PASS",
+      "detail": "solution and field reports cleared; stale result labelled"
+    },
+    {
+      "test": "solver input invalidates saved solution B59",
+      "status": "PASS",
+      "detail": "solution and field reports cleared; stale result labelled"
+    },
+    {
+      "test": "solver input invalidates saved solution B60",
+      "status": "PASS",
+      "detail": "solution and field reports cleared; stale result labelled"
+    },
+    {
+      "test": "solver input invalidates saved solution B61",
+      "status": "PASS",
+      "detail": "solution and field reports cleared; stale result labelled"
+    },
+    {
+      "test": "changed FMM input archives full old solution",
+      "status": "PASS",
+      "detail": "old NPZ/VTK/CSV/report archived; stale import rejected"
+    },
+    {
+      "test": "error recovery preserves application state and allows retry",
+      "status": "PASS",
+      "detail": "invalid theta and nonexistent output folder rejected; retry solved"
+    }
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "test_count": 16,
+  "all_passed": true,
+  "tests": [
+    {
+      "test": "Chebyshev basis 2D p=2",
+      "status": "PASS",
+      "detail": {
+        "max_difference": 8.326672684688674e-17
+      }
+    },
+    {
+      "test": "Chebyshev basis 2D p=4",
+      "status": "PASS",
+      "detail": {
+        "max_difference": 0.0
+      }
+    },
+    {
+      "test": "Chebyshev basis 2D p=6",
+      "status": "PASS",
+      "detail": {
+        "max_difference": 1.1102230246251565e-16
+      }
+    },
+    {
+      "test": "Chebyshev basis 2D p=8",
+      "status": "PASS",
+      "detail": {
+        "max_difference": 2.220446049250313e-16
+      }
+    },
+    {
+      "test": "Chebyshev basis 3D p=2",
+      "status": "PASS",
+      "detail": {
+        "max_difference": 8.326672684688674e-17
+      }
+    },
+    {
+      "test": "Chebyshev basis 3D p=4",
+      "status": "PASS",
+      "detail": {
+        "max_difference": 1.1102230246251565e-16
+      }
+    },
+    {
+      "test": "Chebyshev basis 3D p=6",
+      "status": "PASS",
+      "detail": {
+        "max_difference": 2.498001805406602e-16
+      }
+    },
+    {
+      "test": "Jacobi SVD pseudoinverse n=2 singular=False",
+      "status": "PASS",
+      "detail": {
+        "max_difference": 1.5265566588595902e-16
+      }
+    },
+    {
+      "test": "Jacobi SVD pseudoinverse n=2 singular=True",
+      "status": "PASS",
+      "detail": {
+        "max_difference": 8.326672684688674e-17
+      }
+    },
+    {
+      "test": "Jacobi SVD pseudoinverse n=3 singular=False",
+      "status": "PASS",
+      "detail": {
+        "max_difference": 1.1102230246251565e-16
+      }
+    },
+    {
+      "test": "Jacobi SVD pseudoinverse n=3 singular=True",
+      "status": "PASS",
+      "detail": {
+        "max_difference": 1.1102230246251565e-16
+      }
+    },
+    {
+      "test": "Jacobi SVD pseudoinverse n=4 singular=False",
+      "status": "PASS",
+      "detail": {
+        "max_difference": 3.625572064791527e-16
+      }
+    },
+    {
+      "test": "Jacobi SVD pseudoinverse n=4 singular=True",
+      "status": "PASS",
+      "detail": {
+        "max_difference": 2.733924198139448e-15
+      }
+    },
+    {
+      "test": "Jacobi SVD pseudoinverse n=6 singular=False",
+      "status": "PASS",
+      "detail": {
+        "max_difference": 2.220446049250313e-15
+      }
+    },
+    {
+      "test": "Jacobi SVD pseudoinverse n=6 singular=True",
+      "status": "PASS",
+      "detail": {
+        "max_difference": 7.216449660063518e-16
+      }
+    },
+    {
+      "test": "3D_LONGBOX_three_dimensional_o2_n8_p4",
+      "status": "PASS",
+      "detail": {
+        "DOF": 1224,
+        "far_pairs": 32,
+        "seconds": 88.35901975631714,
+        "VBA_iterations": 45,
+        "VBA_residual": 4.55570965711975e-11,
+        "Python_residual": 4.555736280442097e-11,
+        "operator_relative_max_difference": 3.873637869797528e-14,
+        "boundary_u_max_difference_m": 1.700029006457271e-16,
+        "boundary_t_max_difference_kPa": 3.0732326405935595e-12,
+        "interior_stress_max_difference_kPa": 6.821210263296962e-13,
+        "dense_arrays_empty": true
+      }
+    }
+  ]
+}

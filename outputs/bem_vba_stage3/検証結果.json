@@ -1,0 +1,949 @@
+{
+  "verified_on": "2026-10-08",
+  "excel_version": "16.0",
+  "pass_count": 99,
+  "all_passed": true,
+  "tests": [
+    {
+      "test": "Chebyshev basis 2D p=2",
+      "status": "PASS",
+      "detail": {
+        "max_difference": 8.326672684688674e-17
+      },
+      "source_report": "FMM検証結果.json"
+    },
+    {
+      "test": "Chebyshev basis 2D p=4",
+      "status": "PASS",
+      "detail": {
+        "max_difference": 0.0
+      },
+      "source_report": "FMM検証結果.json"
+    },
+    {
+      "test": "Chebyshev basis 2D p=6",
+      "status": "PASS",
+      "detail": {
+        "max_difference": 1.1102230246251565e-16
+      },
+      "source_report": "FMM検証結果.json"
+    },
+    {
+      "test": "Chebyshev basis 2D p=8",
+      "status": "PASS",
+      "detail": {
+        "max_difference": 2.220446049250313e-16
+      },
+      "source_report": "FMM検証結果.json"
+    },
+    {
+      "test": "Chebyshev basis 3D p=2",
+      "status": "PASS",
+      "detail": {
+        "max_difference": 8.326672684688674e-17
+      },
+      "source_report": "FMM検証結果.json"
+    },
+    {
+      "test": "Chebyshev basis 3D p=4",
+      "status": "PASS",
+      "detail": {
+        "max_difference": 1.1102230246251565e-16
+      },
+      "source_report": "FMM検証結果.json"
+    },
+    {
+      "test": "Chebyshev basis 3D p=6",
+      "status": "PASS",
+      "detail": {
+        "max_difference": 2.498001805406602e-16
+      },
+      "source_report": "FMM検証結果.json"
+    },
+    {
+      "test": "Jacobi SVD pseudoinverse n=2 singular=False",
+      "status": "PASS",
+      "detail": {
+        "max_difference": 1.5265566588595902e-16
+      },
+      "source_report": "FMM検証結果.json"
+    },
+    {
+      "test": "Jacobi SVD pseudoinverse n=2 singular=True",
+      "status": "PASS",
+      "detail": {
+        "max_difference": 8.326672684688674e-17
+      },
+      "source_report": "FMM検証結果.json"
+    },
+    {
+      "test": "Jacobi SVD pseudoinverse n=3 singular=False",
+      "status": "PASS",
+      "detail": {
+        "max_difference": 1.1102230246251565e-16
+      },
+      "source_report": "FMM検証結果.json"
+    },
+    {
+      "test": "Jacobi SVD pseudoinverse n=3 singular=True",
+      "status": "PASS",
+      "detail": {
+        "max_difference": 1.1102230246251565e-16
+      },
+      "source_report": "FMM検証結果.json"
+    },
+    {
+      "test": "Jacobi SVD pseudoinverse n=4 singular=False",
+      "status": "PASS",
+      "detail": {
+        "max_difference": 3.625572064791527e-16
+      },
+      "source_report": "FMM検証結果.json"
+    },
+    {
+      "test": "Jacobi SVD pseudoinverse n=4 singular=True",
+      "status": "PASS",
+      "detail": {
+        "max_difference": 2.733924198139448e-15
+      },
+      "source_report": "FMM検証結果.json"
+    },
+    {
+      "test": "Jacobi SVD pseudoinverse n=6 singular=False",
+      "status": "PASS",
+      "detail": {
+        "max_difference": 2.220446049250313e-15
+      },
+      "source_report": "FMM検証結果.json"
+    },
+    {
+      "test": "Jacobi SVD pseudoinverse n=6 singular=True",
+      "status": "PASS",
+      "detail": {
+        "max_difference": 7.216449660063518e-16
+      },
+      "source_report": "FMM検証結果.json"
+    },
+    {
+      "test": "2D_RECT_plane_strain_o0_n4_p6",
+      "status": "PASS",
+      "detail": {
+        "DOF": 32,
+        "far_pairs": 0,
+        "seconds": 0.13634300231933594,
+        "VBA_iterations": 22,
+        "VBA_residual": 1.79045307504867e-11,
+        "Python_residual": 1.7904462448923612e-11,
+        "operator_relative_max_difference": 1.6687451424594283e-15,
+        "boundary_u_max_difference_m": 4.7704895589362195e-18,
+        "boundary_t_max_difference_kPa": 1.4210854715202004e-13,
+        "interior_stress_max_difference_kPa": 4.263256414560601e-14,
+        "dense_arrays_empty": true
+      },
+      "source_report": "FMM検証結果.json"
+    },
+    {
+      "test": "2D_RECT_plane_strain_o2_n16_p6",
+      "status": "PASS",
+      "detail": {
+        "DOF": 384,
+        "far_pairs": 60,
+        "seconds": 3.724715232849121,
+        "VBA_iterations": 40,
+        "VBA_residual": 4.42138044825652e-11,
+        "Python_residual": 7.56908511164113e-12,
+        "operator_relative_max_difference": 2.382982114974107e-14,
+        "boundary_u_max_difference_m": 3.6516362850180784e-13,
+        "boundary_t_max_difference_kPa": 1.0442792586218275e-07,
+        "interior_stress_max_difference_kPa": 2.836660906169186e-10,
+        "dense_arrays_empty": true
+      },
+      "source_report": "FMM検証結果.json"
+    },
+    {
+      "test": "2D_RECT_plane_strain_o2_n64_p6",
+      "status": "PASS",
+      "detail": {
+        "DOF": 1536,
+        "far_pairs": 212,
+        "seconds": 18.65001368522644,
+        "VBA_iterations": 56,
+        "VBA_residual": 6.79975915715076e-11,
+        "Python_residual": 1.7453621038298978e-11,
+        "operator_relative_max_difference": 1.0725111798349521e-13,
+        "boundary_u_max_difference_m": 5.80261966948159e-13,
+        "boundary_t_max_difference_kPa": 3.0315151461866863e-07,
+        "interior_stress_max_difference_kPa": 6.19475082341836e-10,
+        "dense_arrays_empty": true
+      },
+      "source_report": "FMM検証結果.json"
+    },
+    {
+      "test": "2D_RECT_plane_stress_o2_n12_p6",
+      "status": "PASS",
+      "detail": {
+        "DOF": 288,
+        "far_pairs": 196,
+        "seconds": 6.586350917816162,
+        "VBA_iterations": 39,
+        "VBA_residual": 6.19859098872869e-11,
+        "Python_residual": 6.198583598383121e-11,
+        "operator_relative_max_difference": 1.3680569222917149e-14,
+        "boundary_u_max_difference_m": 7.15573433840433e-18,
+        "boundary_t_max_difference_kPa": 3.439026841078885e-12,
+        "interior_stress_max_difference_kPa": 1.4210854715202004e-14,
+        "dense_arrays_empty": true
+      },
+      "source_report": "FMM検証結果.json"
+    },
+    {
+      "test": "2D_JOIN_plane_strain_o2_n8_p6",
+      "status": "PASS",
+      "detail": {
+        "DOF": 384,
+        "far_pairs": 232,
+        "seconds": 10.339092016220093,
+        "VBA_iterations": 47,
+        "VBA_residual": 3.99360732961961e-11,
+        "Python_residual": 3.9936811369117685e-11,
+        "operator_relative_max_difference": 1.594338789555588e-14,
+        "boundary_u_max_difference_m": 1.0408340855860843e-17,
+        "boundary_t_max_difference_kPa": 5.656808355070098e-12,
+        "interior_stress_max_difference_kPa": 2.2737367544323206e-13,
+        "dense_arrays_empty": true
+      },
+      "source_report": "FMM検証結果.json"
+    },
+    {
+      "test": "3D_BOX_three_dimensional_o0_n1_p4",
+      "status": "PASS",
+      "detail": {
+        "DOF": 36,
+        "far_pairs": 0,
+        "seconds": 1.0946362018585205,
+        "VBA_iterations": 17,
+        "VBA_residual": 2.30708005619605e-12,
+        "Python_residual": 2.307037527399967e-12,
+        "operator_relative_max_difference": 1.2179156692160662e-15,
+        "boundary_u_max_difference_m": 3.469446951953614e-18,
+        "boundary_t_max_difference_kPa": 4.263256414560601e-14,
+        "interior_stress_max_difference_kPa": 8.526512829121202e-14,
+        "dense_arrays_empty": true
+      },
+      "source_report": "FMM検証結果.json"
+    },
+    {
+      "test": "3D_BOX_three_dimensional_o2_n1_p4",
+      "status": "PASS",
+      "detail": {
+        "DOF": 216,
+        "far_pairs": 0,
+        "seconds": 8.610769033432007,
+        "VBA_iterations": 31,
+        "VBA_residual": 5.31916537987969e-11,
+        "Python_residual": 1.865427267371955e-11,
+        "operator_relative_max_difference": 8.547626941272382e-15,
+        "boundary_u_max_difference_m": 2.648824085418888e-13,
+        "boundary_t_max_difference_kPa": 5.109886602473182e-09,
+        "interior_stress_max_difference_kPa": 1.5741373482480725e-09,
+        "dense_arrays_empty": true
+      },
+      "source_report": "FMM検証結果.json"
+    },
+    {
+      "test": "3D_JOIN_three_dimensional_o0_n1_p4",
+      "status": "PASS",
+      "detail": {
+        "DOF": 72,
+        "far_pairs": 0,
+        "seconds": 2.1672041416168213,
+        "VBA_iterations": 24,
+        "VBA_residual": 9.44514345524834e-11,
+        "Python_residual": 9.445148301523566e-11,
+        "operator_relative_max_difference": 1.2657492249473736e-15,
+        "boundary_u_max_difference_m": 9.540979117872439e-18,
+        "boundary_t_max_difference_kPa": 8.526512829121202e-14,
+        "interior_stress_max_difference_kPa": 1.9895196601282805e-13,
+        "dense_arrays_empty": true
+      },
+      "source_report": "FMM検証結果.json"
+    },
+    {
+      "test": "3D_JOIN_three_dimensional_o2_n1_p4",
+      "status": "PASS",
+      "detail": {
+        "DOF": 432,
+        "far_pairs": 0,
+        "seconds": 17.465609788894653,
+        "VBA_iterations": 38,
+        "VBA_residual": 4.69837523006232e-11,
+        "Python_residual": 4.6983505161693605e-11,
+        "operator_relative_max_difference": 8.547626941272382e-15,
+        "boundary_u_max_difference_m": 1.3010426069826053e-17,
+        "boundary_t_max_difference_kPa": 9.521272659185342e-13,
+        "interior_stress_max_difference_kPa": 2.7000623958883807e-13,
+        "dense_arrays_empty": true
+      },
+      "source_report": "FMM検証結果.json"
+    },
+    {
+      "test": "3D_BOX_three_dimensional_o0_n4_p4",
+      "status": "PASS",
+      "detail": {
+        "DOF": 576,
+        "far_pairs": 56,
+        "seconds": 49.16932916641235,
+        "VBA_iterations": 30,
+        "VBA_residual": 5.93353091536323e-11,
+        "Python_residual": 5.933534735458022e-11,
+        "operator_relative_max_difference": 2.3380672854694266e-14,
+        "boundary_u_max_difference_m": 6.5052130349130266e-18,
+        "boundary_t_max_difference_kPa": 2.2879476091475226e-12,
+        "interior_stress_max_difference_kPa": 2.842170943040401e-14,
+        "dense_arrays_empty": true
+      },
+      "source_report": "FMM検証結果.json"
+    },
+    {
+      "test": "3D_LONGBOX_three_dimensional_o2_n8_p4",
+      "status": "PASS",
+      "detail": {
+        "DOF": 1224,
+        "far_pairs": 32,
+        "seconds": 85.8061203956604,
+        "VBA_iterations": 45,
+        "VBA_residual": 4.55570965711975e-11,
+        "Python_residual": 4.555736280442097e-11,
+        "operator_relative_max_difference": 3.873637869797528e-14,
+        "boundary_u_max_difference_m": 1.700029006457271e-16,
+        "boundary_t_max_difference_kPa": 3.0732326405935595e-12,
+        "interior_stress_max_difference_kPa": 6.821210263296962e-13,
+        "dense_arrays_empty": true
+      },
+      "source_report": "FMM検証結果.json"
+    },
+    {
+      "test": "2D_CIRCLE_plane_strain_o2_n24_p6",
+      "status": "PASS",
+      "detail": {
+        "DOF": 144,
+        "far_pairs": 4,
+        "seconds": 1.011038064956665,
+        "VBA_iterations": 38,
+        "VBA_residual": 4.08007067712339e-18,
+        "Python_residual": 7.497478393595616e-11,
+        "operator_relative_max_difference": 1.508441124151548e-14,
+        "boundary_u_max_difference_m": 0.0,
+        "boundary_t_max_difference_kPa": 1.8665648588852034e-12,
+        "interior_stress_max_difference_kPa": 6.350310933522156e-15,
+        "dense_arrays_empty": true
+      },
+      "source_report": "FMM検証結果.json"
+    },
+    {
+      "test": "3D_SPHERE_three_dimensional_o0_n8_p4",
+      "status": "PASS",
+      "detail": {
+        "DOF": 144,
+        "far_pairs": 0,
+        "seconds": 4.205167293548584,
+        "VBA_iterations": 26,
+        "VBA_residual": 4.33400518299771e-18,
+        "Python_residual": 5.625033376844951e-11,
+        "operator_relative_max_difference": 5.245481207732261e-15,
+        "boundary_u_max_difference_m": 0.0,
+        "boundary_t_max_difference_kPa": 4.2068015809050293e-13,
+        "interior_stress_max_difference_kPa": 1.7784020080939132e-14,
+        "dense_arrays_empty": true
+      },
+      "source_report": "FMM検証結果.json"
+    },
+    {
+      "test": "dense / gmres dense cap=1200",
+      "status": "PASS",
+      "detail": {
+        "selected": "dense",
+        "residual": 2.96147862859517e-11,
+        "iterations": 32
+      },
+      "source_report": "演算選択・出力検証結果.json"
+    },
+    {
+      "test": "dense / lu dense cap=1200",
+      "status": "PASS",
+      "detail": {
+        "selected": "dense",
+        "residual": 9.91432797216705e-16,
+        "iterations": 0
+      },
+      "source_report": "演算選択・出力検証結果.json"
+    },
+    {
+      "test": "auto / gmres dense cap=1200",
+      "status": "PASS",
+      "detail": {
+        "selected": "dense",
+        "residual": 2.96147862859517e-11,
+        "iterations": 32
+      },
+      "source_report": "演算選択・出力検証結果.json"
+    },
+    {
+      "test": "auto / gmres dense cap=12",
+      "status": "PASS",
+      "detail": {
+        "selected": "fmm",
+        "residual": 2.96148058459845e-11,
+        "iterations": 32
+      },
+      "source_report": "演算選択・出力検証結果.json"
+    },
+    {
+      "test": "FMM bounded LRU cache=0 MB",
+      "status": "PASS",
+      "detail": {
+        "backend": "fmm",
+        "elements": 48,
+        "field_nodes": 144,
+        "p": 4,
+        "nodes": 45,
+        "leaves": 28,
+        "far_pairs": 196,
+        "near_pairs": 292,
+        "near_entries": 7592,
+        "translation_groups": 92,
+        "near_matrix_MB": 0.492893218994141,
+        "m2l_cache_MB": 0,
+        "cache_limit_MB": 0,
+        "cache_hits": 0,
+        "cache_misses": 4324
+      },
+      "source_report": "演算選択・出力検証結果.json"
+    },
+    {
+      "test": "FMM bounded LRU cache=0.035 MB",
+      "status": "PASS",
+      "detail": {
+        "backend": "fmm",
+        "elements": 48,
+        "field_nodes": 144,
+        "p": 4,
+        "nodes": 45,
+        "leaves": 28,
+        "far_pairs": 196,
+        "near_pairs": 292,
+        "near_entries": 7592,
+        "translation_groups": 92,
+        "near_matrix_MB": 0.492893218994141,
+        "m2l_cache_MB": 0.0234375,
+        "cache_limit_MB": 0.035,
+        "cache_hits": 0,
+        "cache_misses": 4324
+      },
+      "source_report": "演算選択・出力検証結果.json"
+    },
+    {
+      "test": "VBA CSV/NPZ/VTK export 2D order=0",
+      "status": "PASS",
+      "detail": {
+        "report_method": "gmres",
+        "schema": "original Python compatible"
+      },
+      "source_report": "演算選択・出力検証結果.json"
+    },
+    {
+      "test": "VBA CSV/NPZ/VTK export 2D order=2",
+      "status": "PASS",
+      "detail": {
+        "report_method": "gmres",
+        "schema": "original Python compatible"
+      },
+      "source_report": "演算選択・出力検証結果.json"
+    },
+    {
+      "test": "VBA CSV/NPZ/VTK export 3D order=0",
+      "status": "PASS",
+      "detail": {
+        "report_method": "gmres",
+        "schema": "original Python compatible"
+      },
+      "source_report": "演算選択・出力検証結果.json"
+    },
+    {
+      "test": "VBA CSV/NPZ/VTK export 3D order=2",
+      "status": "PASS",
+      "detail": {
+        "report_method": "gmres",
+        "schema": "original Python compatible"
+      },
+      "source_report": "演算選択・出力検証結果.json"
+    },
+    {
+      "test": "GMRES iteration limit retains computed solution",
+      "status": "PASS",
+      "detail": {
+        "backend": "fmm",
+        "method": "gmres",
+        "gmres_info": 1,
+        "iterations": 1,
+        "restart_cycles": 1,
+        "error_code": "LINEAR_SOLVE_TOLERANCE_UNMET",
+        "residual_normalization": "RHS; absolute-term scale when RHS is below arithmetic roundoff",
+        "converged": false,
+        "true_relative_residual": 0.744068368013878,
+        "DOF": 288,
+        "seconds": 1.03515625,
+        "interface_displacement_jump_max": 0,
+        "interface_traction_imbalance_max": 0
+      },
+      "source_report": "演算選択・出力検証結果.json"
+    },
+    {
+      "test": "unavailable internal fields preserved in NPZ/CSV/report",
+      "status": "PASS",
+      "detail": "NaN arrays and False flags",
+      "source_report": "演算選択・出力検証結果.json"
+    },
+    {
+      "test": "explicit internal quadrature gauss",
+      "status": "PASS",
+      "detail": "OK: 96 DOF / residual=2.96147862859517E-11",
+      "source_report": "演算選択・出力検証結果.json"
+    },
+    {
+      "test": "explicit internal quadrature de",
+      "status": "PASS",
+      "detail": "OK: 96 DOF / residual=2.96147862859517E-11",
+      "source_report": "演算選択・出力検証結果.json"
+    },
+    {
+      "test": "invalid FMM/GMRES setting B49",
+      "status": "PASS",
+      "detail": "ERROR: FMM次数pは0（自動）または2D:2～8、3D:2～6です。",
+      "source_report": "演算選択・出力検証結果.json"
+    },
+    {
+      "test": "invalid FMM/GMRES setting B50",
+      "status": "PASS",
+      "detail": "ERROR: 操作!B50: 1～10000の整数を指定してください。",
+      "source_report": "演算選択・出力検証結果.json"
+    },
+    {
+      "test": "invalid FMM/GMRES setting B51",
+      "status": "PASS",
+      "detail": "ERROR: FMM thetaは0より大きく1より小さい数です。",
+      "source_report": "演算選択・出力検証結果.json"
+    },
+    {
+      "test": "invalid FMM/GMRES setting B52",
+      "status": "PASS",
+      "detail": "ERROR: FMMキャッシュは0～8192 MBです。",
+      "source_report": "演算選択・出力検証結果.json"
+    },
+    {
+      "test": "invalid FMM/GMRES setting B53",
+      "status": "PASS",
+      "detail": "ERROR: モデルのメモリ上限は0より大きく16384 MB以下です。",
+      "source_report": "演算選択・出力検証結果.json"
+    },
+    {
+      "test": "invalid FMM/GMRES setting B54",
+      "status": "PASS",
+      "detail": "ERROR: 操作!B54: 1～100000の整数を指定してください。",
+      "source_report": "演算選択・出力検証結果.json"
+    },
+    {
+      "test": "invalid FMM/GMRES setting B55",
+      "status": "PASS",
+      "detail": "ERROR: 操作!B55: 1～1000の整数を指定してください。",
+      "source_report": "演算選択・出力検証結果.json"
+    },
+    {
+      "test": "invalid FMM/GMRES setting B56",
+      "status": "PASS",
+      "detail": "ERROR: 操作!B56: 1～10000の整数を指定してください。",
+      "source_report": "演算選択・出力検証結果.json"
+    },
+    {
+      "test": "invalid FMM/GMRES setting B57",
+      "status": "PASS",
+      "detail": "ERROR: 未知数 288 がモデル上限 1 を超えます。分割を減らすか上限を変更してください。",
+      "source_report": "演算選択・出力検証結果.json"
+    },
+    {
+      "test": "invalid FMM/GMRES setting B58",
+      "status": "PASS",
+      "detail": "ERROR: FMMでは求解法gmresを選択してください。",
+      "source_report": "演算選択・出力検証結果.json"
+    },
+    {
+      "test": "invalid FMM/GMRES setting B59",
+      "status": "PASS",
+      "detail": "ERROR: 内点積分方式はauto、gauss、deです。",
+      "source_report": "演算選択・出力検証結果.json"
+    },
+    {
+      "test": "invalid FMM/GMRES setting B60",
+      "status": "PASS",
+      "detail": "ERROR: 内点近接判定・最小距離比は正の数です。",
+      "source_report": "演算選択・出力検証結果.json"
+    },
+    {
+      "test": "invalid FMM/GMRES setting B61",
+      "status": "PASS",
+      "detail": "ERROR: 内点近接判定・最小距離比は正の数です。",
+      "source_report": "演算選択・出力検証結果.json"
+    },
+    {
+      "test": "FMM model memory rejection before near allocation",
+      "status": "PASS",
+      "detail": "ERROR: block: FMMの未知数またはメモリ上限を超えます。分割・p・キャッシュを減らしてください。",
+      "source_report": "演算選択・出力検証結果.json"
+    },
+    {
+      "test": "3D p upper bound",
+      "status": "PASS",
+      "detail": "ERROR: 操作!B49: 0～6の整数を指定してください。",
+      "source_report": "演算選択・出力検証結果.json"
+    },
+    {
+      "test": "closest point near 2D_RECT",
+      "status": "PASS",
+      "detail": {
+        "max_distance_difference_m": 2.220446049250313e-16
+      },
+      "source_report": "境界近傍・入出力検証結果.json"
+    },
+    {
+      "test": "near-boundary adaptive fields 2D_RECT",
+      "status": "PASS",
+      "detail": {
+        "stress_max_difference_kPa": 7.503331289626658e-12,
+        "converged": true,
+        "seconds": 0.06429910659790039
+      },
+      "source_report": "境界近傍・入出力検証結果.json"
+    },
+    {
+      "test": "closest point near 2D_CIRCLE",
+      "status": "PASS",
+      "detail": {
+        "max_distance_difference_m": 2.220446049250313e-16
+      },
+      "source_report": "境界近傍・入出力検証結果.json"
+    },
+    {
+      "test": "near-boundary adaptive fields 2D_CIRCLE",
+      "status": "PASS",
+      "detail": {
+        "stress_max_difference_kPa": 1.509903313490213e-13,
+        "converged": true,
+        "seconds": 0.0387272834777832
+      },
+      "source_report": "境界近傍・入出力検証結果.json"
+    },
+    {
+      "test": "closest point near 3D_BOX",
+      "status": "PASS",
+      "detail": {
+        "max_distance_difference_m": 0.0
+      },
+      "source_report": "境界近傍・入出力検証結果.json"
+    },
+    {
+      "test": "near-boundary adaptive fields 3D_BOX",
+      "status": "PASS",
+      "detail": {
+        "stress_max_difference_kPa": 6.536993168992922e-13,
+        "converged": true,
+        "seconds": 6.230052709579468
+      },
+      "source_report": "境界近傍・入出力検証結果.json"
+    },
+    {
+      "test": "closest point near 3D_SPHERE",
+      "status": "PASS",
+      "detail": {
+        "max_distance_difference_m": 4.440892098500626e-16
+      },
+      "source_report": "境界近傍・入出力検証結果.json"
+    },
+    {
+      "test": "near-boundary adaptive fields 3D_SPHERE",
+      "status": "PASS",
+      "detail": {
+        "stress_max_difference_kPa": 6.252776074688882e-13,
+        "converged": true,
+        "seconds": 8.592279434204102
+      },
+      "source_report": "境界近傍・入出力検証結果.json"
+    },
+    {
+      "test": "VBA solve/export/import 2D",
+      "status": "PASS",
+      "detail": {
+        "relative_residual": 5.83389367361958e-10,
+        "CSV_schema": "Python compatible"
+      },
+      "source_report": "境界近傍・入出力検証結果.json"
+    },
+    {
+      "test": "VBA solve/export/import 3D",
+      "status": "PASS",
+      "detail": {
+        "relative_residual": 1.62984345122255e-10,
+        "CSV_schema": "Python compatible"
+      },
+      "source_report": "境界近傍・入出力検証結果.json"
+    },
+    {
+      "test": "geometry/material scaling",
+      "status": "PASS",
+      "detail": {
+        "size_m": 0.001,
+        "E_kPa": 30000000.0,
+        "sxx_kPa": 99.99999999532331,
+        "status": "OK: 96 DOF / residual=6.0284996642886E-10"
+      },
+      "source_report": "境界近傍・入出力検証結果.json"
+    },
+    {
+      "test": "mixed dense/FMM bonded two-material regions",
+      "status": "PASS",
+      "detail": {
+        "DOF": 432,
+        "backends": {
+          "left": "dense",
+          "right": "fmm"
+        },
+        "residual": 9.49322324330219e-11,
+        "max_u_difference_m": 2.42861286636753e-17,
+        "max_t_difference_kPa": 2.2600532556538155e-11
+      },
+      "source_report": "再確認検証結果.json"
+    },
+    {
+      "test": "translated geometry with non-axial traction",
+      "status": "PASS",
+      "detail": {
+        "DOF": 288,
+        "backends": {
+          "block": "fmm"
+        },
+        "residual": 6.8138987640015e-11,
+        "max_u_difference_m": 3.384701373343457e-13,
+        "max_t_difference_kPa": 4.205894299502688e-08
+      },
+      "source_report": "再確認検証結果.json"
+    },
+    {
+      "test": "FMM material range plane_stress nu=-0.25",
+      "status": "PASS",
+      "detail": {
+        "DOF": 192,
+        "backends": {
+          "block": "fmm"
+        },
+        "residual": 7.2710908283233e-11,
+        "max_u_difference_m": 2.1510571102112408e-16,
+        "max_t_difference_kPa": 1.9184653865522705e-12
+      },
+      "source_report": "再確認検証結果.json"
+    },
+    {
+      "test": "FMM material range plane_strain nu=0.49",
+      "status": "PASS",
+      "detail": {
+        "DOF": 192,
+        "backends": {
+          "block": "fmm"
+        },
+        "residual": 9.05078501770031e-11,
+        "max_u_difference_m": 5.715407314088594e-12,
+        "max_t_difference_kPa": 4.0142211332749866e-08
+      },
+      "source_report": "再確認検証結果.json"
+    },
+    {
+      "test": "3D auxetic material with three traction components",
+      "status": "PASS",
+      "detail": {
+        "DOF": 216,
+        "backends": {
+          "block": "fmm"
+        },
+        "residual": 9.93211478787256e-11,
+        "max_u_difference_m": 5.421010862427522e-18,
+        "max_t_difference_kPa": 3.197442310920451e-13
+      },
+      "source_report": "再確認検証結果.json"
+    },
+    {
+      "test": "boundary-only solve and Unicode-folder export/import",
+      "status": "PASS",
+      "detail": "CSV/NPZ/report valid without interior points",
+      "source_report": "再確認検証結果.json"
+    },
+    {
+      "test": "interleaved multi-region point IDs and NPZ ordering",
+      "status": "PASS",
+      "detail": "two points per region; IDs and values retained",
+      "source_report": "再確認検証結果.json"
+    },
+    {
+      "test": "solver input invalidates saved solution B13",
+      "status": "PASS",
+      "detail": "solution and field reports cleared; stale result labelled",
+      "source_report": "再確認検証結果.json"
+    },
+    {
+      "test": "solver input invalidates saved solution B49",
+      "status": "PASS",
+      "detail": "solution and field reports cleared; stale result labelled",
+      "source_report": "再確認検証結果.json"
+    },
+    {
+      "test": "solver input invalidates saved solution B50",
+      "status": "PASS",
+      "detail": "solution and field reports cleared; stale result labelled",
+      "source_report": "再確認検証結果.json"
+    },
+    {
+      "test": "solver input invalidates saved solution B51",
+      "status": "PASS",
+      "detail": "solution and field reports cleared; stale result labelled",
+      "source_report": "再確認検証結果.json"
+    },
+    {
+      "test": "solver input invalidates saved solution B52",
+      "status": "PASS",
+      "detail": "solution and field reports cleared; stale result labelled",
+      "source_report": "再確認検証結果.json"
+    },
+    {
+      "test": "solver input invalidates saved solution B53",
+      "status": "PASS",
+      "detail": "solution and field reports cleared; stale result labelled",
+      "source_report": "再確認検証結果.json"
+    },
+    {
+      "test": "solver input invalidates saved solution B54",
+      "status": "PASS",
+      "detail": "solution and field reports cleared; stale result labelled",
+      "source_report": "再確認検証結果.json"
+    },
+    {
+      "test": "solver input invalidates saved solution B55",
+      "status": "PASS",
+      "detail": "solution and field reports cleared; stale result labelled",
+      "source_report": "再確認検証結果.json"
+    },
+    {
+      "test": "solver input invalidates saved solution B56",
+      "status": "PASS",
+      "detail": "solution and field reports cleared; stale result labelled",
+      "source_report": "再確認検証結果.json"
+    },
+    {
+      "test": "solver input invalidates saved solution B57",
+      "status": "PASS",
+      "detail": "solution and field reports cleared; stale result labelled",
+      "source_report": "再確認検証結果.json"
+    },
+    {
+      "test": "solver input invalidates saved solution B58",
+      "status": "PASS",
+      "detail": "solution and field reports cleared; stale result labelled",
+      "source_report": "再確認検証結果.json"
+    },
+    {
+      "test": "solver input invalidates saved solution B59",
+      "status": "PASS",
+      "detail": "solution and field reports cleared; stale result labelled",
+      "source_report": "再確認検証結果.json"
+    },
+    {
+      "test": "solver input invalidates saved solution B60",
+      "status": "PASS",
+      "detail": "solution and field reports cleared; stale result labelled",
+      "source_report": "再確認検証結果.json"
+    },
+    {
+      "test": "solver input invalidates saved solution B61",
+      "status": "PASS",
+      "detail": "solution and field reports cleared; stale result labelled",
+      "source_report": "再確認検証結果.json"
+    },
+    {
+      "test": "changed FMM input archives full old solution",
+      "status": "PASS",
+      "detail": "old NPZ/VTK/CSV/report archived; stale import rejected",
+      "source_report": "再確認検証結果.json"
+    },
+    {
+      "test": "error recovery preserves application state and allows retry",
+      "status": "PASS",
+      "detail": "invalid theta and nonexistent output folder rejected; retry solved",
+      "source_report": "再確認検証結果.json"
+    },
+    {
+      "test": "final FMM workbook native sheets, buttons and selectors",
+      "status": "PASS",
+      "detail": {
+        "sheets": 14,
+        "buttons": 8,
+        "macro_format": 52
+      }
+    },
+    {
+      "test": "final embedded VBA sources including FMM match delivered sources",
+      "status": "PASS",
+      "detail": {
+        "source_count": 29,
+        "temporary_QA_modules": 0,
+        "Python_execution": false
+      }
+    },
+    {
+      "test": "saved FMM initial sample solution",
+      "status": "PASS",
+      "detail": {
+        "DOF": 384,
+        "ux_m": 0.0015166665176119438,
+        "uy_m": -0.0006500002086718824,
+        "sxx_kPa": 99.99999611979898,
+        "szz_kPa": 29.9999958987081
+      }
+    },
+    {
+      "test": "final workbook reopened, solved and exported entirely in VBA",
+      "status": "PASS",
+      "detail": {
+        "DOF": 384,
+        "true_relative_residual": 5.58056954154583e-10,
+        "far_pairs": 60,
+        "formats": "JSON, CSV, VTK, NPZ"
+      }
+    },
+    {
+      "test": "final native mesh chart retained",
+      "status": "PASS",
+      "detail": "128 geometric node markers and 4 boundary series"
+    },
+    {
+      "test": "FMM GMRES exact zero-RHS solution",
+      "status": "PASS",
+      "detail": "all displacements, tractions and internal stresses zero; residual=0"
+    },
+    {
+      "test": "final spreadsheet render and formula error scan",
+      "status": "PASS",
+      "detail": "six rendered sheets/ranges inspected; no spreadsheet error cells"
+    },
+    {
+      "test": "final macro-enabled XLSM package integrity",
+      "status": "PASS",
+      "detail": "native xl/vbaProject.bin present; all ZIP CRCs valid"
+    }
+  ]
+}
