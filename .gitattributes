@@ -1,8 +1,8 @@
 * text=auto eol=lf
-*.bat text eol=crlf
+*.bat -text
 *.xlsm binary
 *.npz binary
 *.zip binary
 *.png binary
-vba_src/* text eol=lf
+vba_src/* -text
 outputs/bem_vba_stage3/vba/* binary
